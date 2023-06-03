@@ -40,14 +40,14 @@ const stockIDs = require('./stockID.json');
         timestamp: dayjs().format('YYYY-MM-DD HH:mm:ss')
       }
       console.log(`${data.id} sent`)
-      
+
       // 將資料送到kafka
       await producer.send({
         topic,
         compression: CompressionTypes.GZIP,
         // 以stock_id為key，以確保順序
         messages: [
-          { kery: data.id, value: JSON.stringify(latestPrice) },
+          { key: data.id, value: JSON.stringify(latestPrice) },
         ],
       });
 
