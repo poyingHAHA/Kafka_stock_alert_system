@@ -28,6 +28,7 @@ const stockIDs = require('./stockID.json');
   // 每10秒爬取一次台積電的股價
   let job = new CronJob('*/5 * * * * *', function() {
     let stock_id = '2330';
+    // 爬取股價
     axios({
       method: 'get',
       url: `https://tw.quote.finance.yahoo.net/quote/q?type=ta&perd=d&mkt=10&sym=${stock_id}&v=1&callback=jQuery111309023063595469201_1661825388208&_=1661825388209`,
@@ -39,6 +40,8 @@ const stockIDs = require('./stockID.json');
         timestamp: dayjs().format('YYYY-MM-DD HH:mm:ss')
       }
       console.log(`${data.id} sent`)
+      
+      // 將資料送到kafka
       await producer.send({
         topic,
         compression: CompressionTypes.GZIP,
@@ -47,6 +50,7 @@ const stockIDs = require('./stockID.json');
           { kery: data.id, value: JSON.stringify(latestPrice) },
         ],
       });
+
     })
   }, null, true, 'Asia/Taipei');
 
