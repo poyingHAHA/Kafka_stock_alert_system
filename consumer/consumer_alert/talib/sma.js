@@ -6,23 +6,23 @@ const talib = require('talib');
  * @param {*} period : period of SMA
  * @returns : last SMA
  */
-const getLastSMAClose = async (closes, period) => {
+const getLastSMAClose = async (price, period) => {
   const result = await talib.execute({
     name: 'SMA',
     startIdx: 0,
-    endIdx: closes.length - 1,
-    inReal: closes,
+    endIdx: price.close.length - 1,
+    inReal: price.close,
     optInTimePeriod: period
   })
   return {lastSMA: result.result.outReal[result.result.outReal.length - 1]}
 }
 
-const getSMAClose = async (closes, period) => {
+const getSMAClose = async (price, period) => {
   const result = await talib.execute({
     name: 'SMA',
     startIdx: 0,
-    endIdx: closes.length - 1,
-    inReal: closes,
+    endIdx: price.close.length - 1,
+    inReal: price.close,
     optInTimePeriod: period
   })
   return {SMA: result.result.outReal}

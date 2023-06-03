@@ -3,14 +3,14 @@ const { getLastKd, getKd } = require('./kd');
 const { getLastBBand, getBBand } = require('./bband');
 
 const stock2330 = require('../json/2330台積電.json');
-const stock2330Close = stock2330.price.close;
+const stock2330Price = stock2330.price;
 
 ( async () => {
-  // const result = await getLastSMAClose(stock2330Close, 5)
-  // console.log(result)
+  const result = await getLastSMAClose(stock2330Price, 5)
+  console.log(result)
 
-  // const result2 = await getSMAClose(stock2330Close, 5)
-  // console.log(result2)
+  const result2 = await getSMAClose(stock2330Price, 5)
+  console.log(result2)
 
   // const result3 = await getLastKd({
   //   highs: stock2330.price.high,
