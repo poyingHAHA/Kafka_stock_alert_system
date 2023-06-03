@@ -13,11 +13,12 @@ const topic = process.env.STOCK_PRICE_TOPIC;
   await consumer.run({
     eachMessage: async ({ topic, partition, message }) => {
       const history = JSON.parse( message.value.toString() )
-      console.log(history)
-      fs.writeFile(`./json/${history.stock}.json`, JSON.stringify(history), (err) => {
-        if (err) throw err;
-        console.log('The file has been saved!');
-      })
     }
   });
 })()
+
+// console.log(history)
+// fs.writeFile(`./json/${history.stock}.json`, JSON.stringify(history), (err) => {
+//   if (err) throw err;
+//   console.log('The file has been saved!');
+// })
