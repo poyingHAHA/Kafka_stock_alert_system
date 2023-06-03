@@ -1,8 +1,9 @@
 const { smaUpCross, smaDownCross, smaShortDownCrossLong, smaShortUpCrossLong } = require('./sma.condition');
+// const { kdUpCross, kdDiffUpCross, kdDiffDownCross, kdDownCross } = require('./kd.condition');
 const stock2330 = require('../json/2330台積電.json');
 
-(
-  async () => {
+// sma condition test
+(async () => {
     const result = await smaUpCross(stock2330.price.close, 10);
     console.log(result);
 
@@ -16,3 +17,7 @@ const stock2330 = require('../json/2330台積電.json');
     console.log(result4);
   }
 )()
+
+// kd condition test
+// (async () => {
+// })()

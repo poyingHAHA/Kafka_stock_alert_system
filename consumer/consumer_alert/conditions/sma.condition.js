@@ -7,7 +7,7 @@ const smaUpCross = async (closes, period) => {
   return {
     result: lastClose > lastSMA,
     lastClose,
-    lastSMA
+    lastSMA,
   };
 }
 

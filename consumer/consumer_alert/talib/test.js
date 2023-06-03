@@ -39,11 +39,11 @@ const stock2330Close = stock2330.price.close;
   // })
   // console.log(result5)
 
-  const result6 = await getBBand({
-    closes: stock2330Close,
-    period: 5,
-    NumOfDev: 2
-  })
-  console.log(result6)
+  // const result6 = await getBBand({
+  //   closes: stock2330Close,
+  //   period: 5,
+  //   NumOfDev: 2
+  // })
+  // console.log(result6)
   
 })()

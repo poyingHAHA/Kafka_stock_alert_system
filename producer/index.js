@@ -35,7 +35,7 @@ const stockIDs = require('./stockID.json');
     }).then(async (res) => {
       const data = JSON.parse(res.data.replace(/^[^\(]*\(/, '').replace(/\)[^\)]*$/, '').replace(/\"143":\d+,/, '')) // 將143的資料刪除，因為value的開頭是0會報錯
       const latestPrice = {
-        stock: `${data.id+data.mem.name}`,
+        stock: `${data.id+data.mem.name}`, // '2330台積電'
         price: toTalibFormat(data.ta),
         timestamp: dayjs().format('YYYY-MM-DD HH:mm:ss')
       }
