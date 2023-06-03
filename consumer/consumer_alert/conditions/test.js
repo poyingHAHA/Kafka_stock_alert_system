@@ -4,16 +4,16 @@ const stock2330 = require('../json/2330台積電.json');
 
 // sma condition test
 (async () => {
-    const result = await smaUpCross(stock2330.price.close, 10);
+    const result = await smaUpCross(stock2330.price, 10);
     console.log(result);
 
-    const result2 = await smaDownCross(stock2330.price.close, 10);
+    const result2 = await smaDownCross(stock2330.price, 10);
     console.log(result2);
 
-    const result3 = await smaShortDownCrossLong(stock2330.price.close, 5, 10);
+    const result3 = await smaShortDownCrossLong(stock2330.price, 5, 10);
     console.log(result3);
 
-    const result4 = await smaShortUpCrossLong(stock2330.price.close, 5, 10);
+    const result4 = await smaShortUpCrossLong(stock2330.price, 5, 10);
     console.log(result4);
   }
 )()

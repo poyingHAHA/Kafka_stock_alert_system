@@ -1,9 +1,9 @@
 const { getLastSMAClose } = require('../talib/sma');
 
 // 股價向上超越SMA_period
-const smaUpCross = async (closes, period) => {
-  const { lastSMA } = await getLastSMAClose(closes, period);
-  const lastClose = closes[closes.length - 1];
+const smaUpCross = async (price, period) => {
+  const { lastSMA } = await getLastSMAClose(price, period);
+  const lastClose = price.close[price.close.length - 1];
   return {
     result: lastClose > lastSMA,
     lastClose,
@@ -12,9 +12,9 @@ const smaUpCross = async (closes, period) => {
 }
 
 // 股價向下跌破SMA_period
-const smaDownCross = async (closes, period) => {
-  const { lastSMA } = await getLastSMAClose(closes, period);
-  const lastClose = closes[closes.length - 1];
+const smaDownCross = async (price, period) => {
+  const { lastSMA } = await getLastSMAClose(price, period);
+  const lastClose = price.close[price.close.length - 1];
   return {
     result: lastClose < lastSMA,
     lastClose,
@@ -23,9 +23,9 @@ const smaDownCross = async (closes, period) => {
 }
 
 // short日sma向上超越long日sma
-const smaShortUpCrossLong = async (closes, shortPeriod, longPeriod) => {
-  const { lastSMA: shortSMA } = await getLastSMAClose(closes, shortPeriod);
-  const { lastSMA: longSMA } = await getLastSMAClose(closes, longPeriod);
+const smaShortUpCrossLong = async (price, shortPeriod, longPeriod) => {
+  const { lastSMA: shortSMA } = await getLastSMAClose(price, shortPeriod);
+  const { lastSMA: longSMA } = await getLastSMAClose(price, longPeriod);
   return {
     result: shortSMA > longSMA,
     shortSMA,
@@ -34,9 +34,9 @@ const smaShortUpCrossLong = async (closes, shortPeriod, longPeriod) => {
 }
 
 // short日sma向下跌破long日sma
-const smaShortDownCrossLong = async (closes, shortPeriod, longPeriod) => {
-  const { lastSMA: shortSMA } = await getLastSMAClose(closes, shortPeriod);
-  const { lastSMA: longSMA } = await getLastSMAClose(closes, longPeriod);
+const smaShortDownCrossLong = async (price, shortPeriod, longPeriod) => {
+  const { lastSMA: shortSMA } = await getLastSMAClose(price, shortPeriod);
+  const { lastSMA: longSMA } = await getLastSMAClose(price, longPeriod);
   return {
     result: shortSMA < longSMA,
     shortSMA,
