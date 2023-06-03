@@ -6,12 +6,12 @@ const talib = require('talib');
  * @param {*} NumOdDev : Num of Deviation
  * @returns : {lastUpperBand, lastmiddleBand, lastLowerBand}
  */
-const getLastBBand = async ({closes, period, NumOfDev}) => {
+const getLastBBand = async ({price, period, NumOfDev}) => {
   const result = await talib.execute({
     name: 'BBANDS',
     startIdx: 0,
-    endIdx: closes.length - 1,
-    inReal: closes,
+    endIdx: price.close.length - 1,
+    inReal: price.close,
     optInTimePeriod: period,
     optInNbDevUp: NumOfDev,
     optInNbDevDn: NumOfDev,
@@ -25,12 +25,12 @@ const getLastBBand = async ({closes, period, NumOfDev}) => {
   };
 };
 
-const getBBand = async ({closes, period, NumOfDev}) => {
+const getBBand = async ({price, period, NumOfDev}) => {
   const result = await talib.execute({
     name: 'BBANDS',
     startIdx: 0,
-    endIdx: closes.length - 1,
-    inReal: closes,
+    endIdx: price.close.length - 1,
+    inReal: price.close,
     optInTimePeriod: period,
     optInNbDevUp: NumOfDev,
     optInNbDevDn: NumOfDev,

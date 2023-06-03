@@ -12,34 +12,34 @@ const stock2330Price = stock2330.price;
   // const result2 = await getSMAClose(stock2330Price, 5)
   // console.log(result2)
 
-  const result3 = await getLastKd({
-    price: stock2330Price,
-    fastK: 9,
-    slowK: 3,
-    slowD: 3
-  })
-  console.log(result3)
-
-  const result4 = await getKd({
-    price: stock2330Price,
-    fastK: 9,
-    slowK: 3,
-    slowD: 3
-  })
-  console.log(result4)
-
-  // const result5 = await getLastBBand({
-  //   closes: stock2330Close,
-  //   period: 5,
-  //   NumOfDev: 2
+  // const result3 = await getLastKd({
+  //   price: stock2330Price,
+  //   fastK: 9,
+  //   slowK: 3,
+  //   slowD: 3
   // })
-  // console.log(result5)
+  // console.log(result3)
 
-  // const result6 = await getBBand({
-  //   closes: stock2330Close,
-  //   period: 5,
-  //   NumOfDev: 2
+  // const result4 = await getKd({
+  //   price: stock2330Price,
+  //   fastK: 9,
+  //   slowK: 3,
+  //   slowD: 3
   // })
-  // console.log(result6)
+  // console.log(result4)
+
+  const result5 = await getLastBBand({
+    price: stock2330Price,
+    period: 5,
+    NumOfDev: 2
+  })
+  console.log(result5)
+
+  const result6 = await getBBand({
+    price: stock2330Price,
+    period: 5,
+    NumOfDev: 2
+  })
+  console.log(result6)
   
 })()
