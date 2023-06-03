@@ -4,7 +4,7 @@ const { kafka } = require('./broker/brokerClient');
 const fs = require("fs");
 
 const consumer = kafka.consumer({ groupId: process.env.CONSUMER_GROUP });
-const topic = process.env.TOPIC;
+const topic = process.env.STOCK_PRICE_TOPIC;
 
 (async () => {
   await consumer.connect();

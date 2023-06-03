@@ -4,12 +4,22 @@ const axios = require('axios');
 const CronJob = require('cron').CronJob;
 const { kafka } = require('./broker/brokerClient.js');
 const {CompressionTypes} = require('kafkajs')
-const producer = kafka.producer();
 const toTalibFormat = require('./utils/toTalibFormat.js');
-const topic = process.env.TOPIC;
+const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc');
+const timezone = require('dayjs/plugin/timezone');
+
+const topic = process.env.STOCK_PRICE_TOPIC;
+const producer = kafka.producer();
+
+// 載入所需的插件
+dayjs.extend(utc);
+dayjs.extend(timezone);
+// 設定預設時區
+dayjs.tz.setDefault('Asia/Taipei'); // 請根據您的當地時區設定
+
 // 半導體174支股票id
 const stockIDs = require('./stockID.json');
-
 
 (async() => {
   // 連接broker
@@ -24,10 +34,9 @@ const stockIDs = require('./stockID.json');
     }).then(async (res) => {
       const data = JSON.parse(res.data.replace(/^[^\(]*\(/, '').replace(/\)[^\)]*$/, '').replace(/\"143":\d+,/, '')) // 將143的資料刪除，因為value的開頭是0會報錯
       const latestPrice = {
-        // [`${data.id+data.mem.name}`]: data.ta[data.ta.length - 1]
-        // [`${data.id+data.mem.name}`]: data.ta
         stock: `${data.id+data.mem.name}`,
         price: toTalibFormat(data.ta),
+        timestamp: dayjs().format('YYYY-MM-DD HH:mm:ss')
       }
       console.log(`${data.id} sent`)
       await producer.send({
