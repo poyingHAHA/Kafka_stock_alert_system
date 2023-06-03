@@ -1,13 +1,13 @@
 const talib = require('talib');
 
-const getLastKd = async ({highs, closes, lows, fastK, slowK, slowD}) => {
+const getLastKd = async ({price, fastK, slowK, slowD}) => {
   const result = await talib.execute({
     name: 'STOCH',
     startIdx: 0,
-    endIdx: closes.length - 1,
-    high: highs,
-    low: lows,
-    close: closes,
+    endIdx: price.close.length - 1,
+    high: price.high,
+    low: price.low,
+    close: price.close,
     optInFastK_Period: fastK || 9,
     optInSlowK_Period: slowK || 3,
     optInSlowD_Period: slowD || 3,
@@ -21,14 +21,14 @@ const getLastKd = async ({highs, closes, lows, fastK, slowK, slowD}) => {
   }
 }
 
-const getKd = async ({highs, closes, lows, fastK, slowK, slowD}) => {
+const getKd = async ({price, fastK, slowK, slowD}) => {
   const result = await talib.execute({
     name: 'STOCH',
     startIdx: 0,
-    endIdx: closes.length - 1,
-    high: highs,
-    low: lows,
-    close: closes,
+    endIdx: price.close.length - 1,
+    high: price.high,
+    low: price.low,
+    close: price.close,
     optInFastK_Period: fastK || 9,
     optInSlowK_Period: slowK || 3,
     optInSlowD_Period: slowD || 3,
