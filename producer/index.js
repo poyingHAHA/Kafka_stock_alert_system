@@ -61,8 +61,8 @@ const stockIDs = require('./stockID.json');
 
 
 
-
-// 爬取台股半導體174支股票，目前先用2330測試
+// let triggered = {}
+// // 爬取台股半導體174支股票，目前先用2330測試
 // for(stock_id of stockIDs.semi) {
 //   let id = stock_id
 //   axios({
@@ -71,6 +71,8 @@ const stockIDs = require('./stockID.json');
 //   }).then((res) => {
 //     const data = JSON.parse(res.data.replace(/^[^\(]*\(/, '').replace(/\)[^\)]*$/, '').replace(/\"143":\d+,/, ''))
 //     console.log(`${data.id}${data.mem.name}: `, data.ta[data.ta.length - 1])
+//     triggered[`${data.id}${data.mem.name}`] = {}
+//     console.log(triggered)
 //   }).catch((err) => {
 //     // 2334已經下市
 //     console.log(id, "已下市")

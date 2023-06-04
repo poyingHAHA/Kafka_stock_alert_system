@@ -1,7 +1,7 @@
 const { getLastKd } = require('../talib/kd');
 
 // k值由下往上穿越d值
-const kdUpCross = async (price, fastK, slowK, slowD) => {
+const kdUpCross = async ({price, fastK, slowK, slowD}) => {
   const { lastK, lastD } = await getLastKd({
     price,
     fastK: fastK || 9,
@@ -16,7 +16,7 @@ const kdUpCross = async (price, fastK, slowK, slowD) => {
 }
 
 // k值還差diff值就要向上穿越d值
-const kdDiffUpCross = async (price, diff, fastK, slowK, slowD) => {
+const kdDiffUpCross = async ({price, diff, fastK, slowK, slowD}) => {
   const { lastK, lastD } = await getLastKd({
     price,
     fastK: fastK || 9,
@@ -32,7 +32,7 @@ const kdDiffUpCross = async (price, diff, fastK, slowK, slowD) => {
 }
 
 // k值還差diff值就要向下穿越d值
-const kdDiffDownCross = async (price, diff, fastK, slowK, slowD) => {
+const kdDiffDownCross = async ({price, diff, fastK, slowK, slowD}) => {
   const { lastK, lastD } = await getLastKd({
     price,
     fastK: fastK || 9,
@@ -48,7 +48,7 @@ const kdDiffDownCross = async (price, diff, fastK, slowK, slowD) => {
 }
 
 // k值由上往下穿越d值
-const kdDownCross = async (price, fastK, slowK, slowD) => {
+const kdDownCross = async ({price, fastK, slowK, slowD}) => {
   const { lastK, lastD } = await getLastKd({
     price,
     fastK: fastK || 9,
@@ -63,7 +63,7 @@ const kdDownCross = async (price, fastK, slowK, slowD) => {
 }
 
 // k值即將或已經超越threshold值
-const kdUpThreshold = async (price, threshold, diff, fastK, slowK, slowD) => {
+const kdUpThreshold = async ({price, threshold, diff, fastK, slowK, slowD}) => {
   const { lastK, lastD } = await getLastKd({
     price,
     fastK: fastK || 9,
@@ -79,7 +79,7 @@ const kdUpThreshold = async (price, threshold, diff, fastK, slowK, slowD) => {
 }
 
 // k值即將或已經低於threshold值
-const kdDownThreshold = async (price, threshold, diff, fastK, slowK, slowD) => {
+const kdDownThreshold = async ({price, threshold, diff, fastK, slowK, slowD}) => {
   const { lastK, lastD } = await getLastKd({
     price,
     fastK: fastK || 9,

@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const { kafka } = require('./broker/brokerClient');
 const fs = require("fs");
+const { alert } = require('./conditions/index');
 
 const consumer = kafka.consumer({ groupId: process.env.CONSUMER_GROUP });
 const topic = process.env.STOCK_PRICE_TOPIC;
@@ -12,8 +13,8 @@ const topic = process.env.STOCK_PRICE_TOPIC;
   
   await consumer.run({
     eachMessage: async ({ topic, partition, message }) => {
-      const history = JSON.parse( message.value.toString() )
-      console.log(history)
+      const history = await JSON.parse( message.value.toString() );
+      alert(history);
     }
   });
 })()

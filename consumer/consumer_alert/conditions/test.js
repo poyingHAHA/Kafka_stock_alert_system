@@ -5,38 +5,38 @@ const stock2330 = require('../json/2330台積電.json');
 
 // sma condition test
 // (async () => {
-//     const result = await smaUpCross(stock2330.price, 10);
+//     const result = await smaUpCross({price: stock2330.price, period: 10});
 //     console.log(result);
 
-//     const result2 = await smaDownCross(stock2330.price, 10);
+//     const result2 = await smaDownCross({price: stock2330.price, period: 10});
 //     console.log(result2);
 
-//     const result3 = await smaShortDownCrossLong(stock2330.price, 5, 10);
+//     const result3 = await smaShortDownCrossLong({price: stock2330.price, shortPeriod: 5, longPeriod: 10});
 //     console.log(result3);
 
-//     const result4 = await smaShortUpCrossLong(stock2330.price, 5, 10);
+//     const result4 = await smaShortUpCrossLong({price: stock2330.price, shortPeriod: 5, longPeriod: 10});
 //     console.log(result4);
 //   }
 // )()
 
 // kd condition test
 // (async () => {
-//   const result = await kdUpCross(stock2330.price);
+//   const result = await kdUpCross({price: stock2330.price});
 //   console.log("k值由下往上穿越d值測試: ", result);
 
-//   const result2 = await kdDiffUpCross(stock2330.price, 5);
+//   const result2 = await kdDiffUpCross({price: stock2330.price, diff: 5});
 //   console.log("k值還差diff值就要向上穿越d值測試: ", result2);
 
-//   const result3 = await kdDiffDownCross(stock2330.price, 5);
+//   const result3 = await kdDiffDownCross({price: stock2330.price, diff: 5});
 //   console.log("k值還差diff值就要向下穿越d值測試: ", result3);
 
-//   const result4 = await kdDownCross(stock2330.price);
+//   const result4 = await kdDownCross({price: stock2330.price});
 //   console.log("k值由上往下穿越d值測試: ", result4);
 
-//   const result5 = await kdUpThreshold(stock2330.price, 80);
+//   const result5 = await kdUpThreshold({price: stock2330.price, threshold: 80});
 //   console.log("k值即將或已經超越threshold值測試:", result5);
 
-//   const result6 = await kdDownThreshold(stock2330.price, 20);
+//   const result6 = await kdDownThreshold({price: stock2330.price, threshold: 20});
 //   console.log("k值即將或已經低於threshold值: ", result6);
 // })()
 
