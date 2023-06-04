@@ -35,6 +35,7 @@ const alertOnce = async (stock) => {
   const condition12 = await bbandUpCrossMiddle({ price: stock.price, period: 5, NumOfDev: 2 });
   
   // TODO: 對於第一次就觸發的條件，做一些處理
+  // TODO: 對log內容做一修改，讓他更好閱讀
   if (condition1.result) {
     triggered[stock.stock]['kdUpCross'] = true;
     alertOnceLogger.info(`${stock.stock} kdUpCross, price: ${stock.price}, K: ${condition1.lastK}, D: ${condition1.lastD}`);
@@ -101,6 +102,7 @@ const alert = async (stock) => {
   const condition12 = await bbandUpCrossMiddle({ price: stock.price, period: 5, NumOfDev: 2 });
 
   // TODO: 對於之後觸發的條件，做一些處理
+  // TODO: 對log內容做一修改，讓他更好閱讀
   if (condition1.result && !triggered[stock.stock]['kdUpCross']) {
     triggered[stock.stock]['kdUpCross'] = true;
     alertLogger.info(`${stock.stock} kdUpCross, price: ${stock.price}, K: ${condition1.lastK}, D: ${condition1.lastD}`);
