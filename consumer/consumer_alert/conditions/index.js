@@ -29,10 +29,10 @@ const alertOnce = async (stock) => {
   const condition6 = await smaDownCross({ price: stock.price, period: 5 });
   const condition7 = await smaShortUpCrossLong({ price: stock.price, shortPeriod: 5, longPeriod: 10 });
   const condition8 = await smaShortDownCrossLong({ price: stock.price, shortPeriod: 5, longPeriod: 10 });
-  const condition9 = await bbandDownCross({ price: stock.price, period: 5, NumOfDev: 2 });
-  const condition10 = await bbandUpCross({ price: stock.price, period: 5, NumOfDev: 2 });
-  const condition11 = await bbandDownCrossMiddle({ price: stock.price, period: 5, NumOfDev: 2 });
-  const condition12 = await bbandUpCrossMiddle({ price: stock.price, period: 5, NumOfDev: 2 });
+  const condition9 = await bbandDownCross({ price: stock.price, period: 5, std: 2 });
+  const condition10 = await bbandUpCross({ price: stock.price, period: 5, std: 2 });
+  const condition11 = await bbandDownCrossMiddle({ price: stock.price, period: 5, std: 2 });
+  const condition12 = await bbandUpCrossMiddle({ price: stock.price, period: 5, std: 2 });
   const price = stock.price.close[stock.price.close.length-1];
   
   // TODO: 對於第一次就觸發的條件，做一些處理
@@ -97,10 +97,10 @@ const alert = async (stock) => {
   const condition6 = await smaDownCross({ price: stock.price, period: 5 });
   const condition7 = await smaShortUpCrossLong({ price: stock.price, shortPeriod: 5, longPeriod: 10 });
   const condition8 = await smaShortDownCrossLong({ price: stock.price, shortPeriod: 5, longPeriod: 10 });
-  const condition9 = await bbandDownCross({ price: stock.price, period: 5, NumOfDev: 2 });
-  const condition10 = await bbandUpCross({ price: stock.price, period: 5, NumOfDev: 2 });
-  const condition11 = await bbandDownCrossMiddle({ price: stock.price, period: 5, NumOfDev: 2 });
-  const condition12 = await bbandUpCrossMiddle({ price: stock.price, period: 5, NumOfDev: 2 });
+  const condition9 = await bbandDownCross({ price: stock.price, period: 5, std: 2 });
+  const condition10 = await bbandUpCross({ price: stock.price, period: 5, std: 2 });
+  const condition11 = await bbandDownCrossMiddle({ price: stock.price, period: 5, std: 2 });
+  const condition12 = await bbandUpCrossMiddle({ price: stock.price, period: 5, std: 2 });
   const price = stock.price.close[stock.price.close.length-1];
 
   // TODO: 對於之後觸發的條件，做一些處理

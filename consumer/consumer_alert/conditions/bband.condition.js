@@ -1,8 +1,8 @@
 const { getLastBBand } = require('../talib/bband');
 
 // 股價由下往上穿越下軌線，可能表示股價即將向上反轉
-const bbandDownCross = async ({price, diff, period, NumOfDev}) => {
-  const { lastLowerBand } = await getLastBBand({ price, period, NumOfDev });
+const bbandDownCross = async ({price, diff, period, std}) => {
+  const { lastLowerBand } = await getLastBBand({ price, period, std });
   const lastClose = price.close[price.close.length - 1];
   return {
     result: lastClose + (diff || 0) >= lastLowerBand,
@@ -12,8 +12,8 @@ const bbandDownCross = async ({price, diff, period, NumOfDev}) => {
 }
 
 // 股價由下往上穿越上軌線，可能表示股價即將向下反轉
-const bbandUpCross = async ({price, diff, period, NumOfDev}) => {
-  const { lastUpperBand } = await getLastBBand({ price, period, NumOfDev });
+const bbandUpCross = async ({price, diff, period, std}) => {
+  const { lastUpperBand } = await getLastBBand({ price, period, std });
   const lastClose = price.close[price.close.length - 1];
   return {
     result: lastClose + (diff || 0) >= lastUpperBand,
@@ -23,8 +23,8 @@ const bbandUpCross = async ({price, diff, period, NumOfDev}) => {
 }
 
 // 股價由下往上穿越中軌線，可能表示股價即將向上反轉
-const bbandDownCrossMiddle = async ({price, diff, period, NumOfDev}) => {
-  const { lastMiddleBand } = await getLastBBand({ price, period, NumOfDev });
+const bbandDownCrossMiddle = async ({price, diff, period, std}) => {
+  const { lastMiddleBand } = await getLastBBand({ price, period, std });
   const lastClose = price.close[price.close.length - 1];
   return {
     result: lastClose + (diff || 0) >= lastMiddleBand,
@@ -34,8 +34,8 @@ const bbandDownCrossMiddle = async ({price, diff, period, NumOfDev}) => {
 }
 
 // 股價由上往下穿越中軌線，可能表示股價即將向下反轉
-const bbandUpCrossMiddle = async ({price, diff, period, NumOfDev}) => {
-  const { lastMiddleBand } = await getLastBBand({ price, period, NumOfDev });
+const bbandUpCrossMiddle = async ({price, diff, period, std}) => {
+  const { lastMiddleBand } = await getLastBBand({ price, period, std });
   const lastClose = price.close[price.close.length - 1];
   return {
     result: lastClose - (diff || 0) <= lastMiddleBand,
