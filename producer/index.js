@@ -38,7 +38,8 @@ const stockIDs = require('./stockID.json');
         const latestPrice = {
           stock: `${data.id+data.mem.name}`, // '2330台積電'
           price: toTalibFormat(data.ta),
-          timestamp: dayjs().format('YYYY-MM-DD HH:mm:ss')
+          timestamp: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+          industry: "半導體" // 先寫死
         }
         console.log(`${dayjs().format('YYYY-MM-DD HH:mm:ss')}: ${data.id} sent`)
 

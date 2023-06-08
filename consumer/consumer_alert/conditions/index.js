@@ -3,6 +3,7 @@ const { kdUpCross, kdDiffUpCross, kdDiffDownCross, kdDownCross } = require('./kd
 const { smaUpCross, smaDownCross, smaShortUpCrossLong, smaShortDownCrossLong } = require('./sma.condition');
 const config = require('../config/condition.config');
 const { roundToN } = require('../utils/number.util');
+const { sendLineMsg } = require('../utils/line.util');
 const log4js = require('log4js');
 log4js.configure({
   appenders: { 
@@ -18,10 +19,10 @@ log4js.configure({
 const alertLogger = log4js.getLogger("stock_alert");
 const alertOnceLogger = log4js.getLogger("stock_alert_once");
 
-// 每個條件一天只能觸發一次
+// 每個條件一天只能觸發一次, 用來記錄已經觸發過的條件, 避免重複觸發。每日00:00會清空
 let triggered = require('../json/triggered.json');
 
-// 每天只會執行一次，而且是第一個執行
+// 每天只會執行一次，而且是第一個執行, 用來記錄已經達成的條件, 避免重複執行。
 const alertOnce = async (stock) => {
   const condition1 = await kdUpCross({price: stock.price, fastK: config.kdUpCross.params.fastK, slowK: config.kdUpCross.slowK, slowD: config.kdUpCross.slowD});
   const condition2 = await kdDiffUpCross({price: stock.price, diff: config.kdDiffUpCross.params.diff, fastK: config.kdDiffUpCross.params.fastK, slowK: config.kdDiffUpCross.params.slowK, slowD: config.kdDiffUpCross.params.slowD});
@@ -41,51 +42,51 @@ const alertOnce = async (stock) => {
   // TODO: 對log內容做一修改，讓他更好閱讀
   if (condition1.result) {
     triggered[stock.stock]['kdUpCross'] = true;
-    alertOnceLogger.info(`${stock.stock} kdUpCross, price: ${price}, K: ${roundToN(condition1.lastK, 2)}, D: ${roundToN(condition1.lastD, 2)}`);
+    alertOnceLogger.info(`${stock.stock} kdUpCross, price: ${price}, K: ${roundToN(condition1.lastK, 2)}, D: ${roundToN(condition1.lastD, 2)}, 是否看漲：${config.kdUpCross.up ? '是' : '否'}`);
   };
   if (condition2.result) {
     triggered[stock.stock]['kdDiffUpCross'] = true;
-    alertOnceLogger.info(`${stock.stock} kdDiffUpCross, price: ${price}, K: ${roundToN(condition2.lastK, 2)}, D: ${roundToN(condition2.lastD, 2)}`);
+    alertOnceLogger.info(`${stock.stock} kdDiffUpCross, price: ${price}, K: ${roundToN(condition2.lastK, 2)}, D: ${roundToN(condition2.lastD, 2)}, 是否看漲：${config.kdDiffUpCross.up ? '是' : '否'}`);
   };
   if (condition3.result) {
     triggered[stock.stock]['kdDiffDownCross'] = true;
-    alertOnceLogger.info(`${stock.stock} kdDiffDownCross, price: ${price}, K: ${roundToN(condition3.lastK, 2)}, D: ${roundToN(condition3.lastD, 2)}`);
+    alertOnceLogger.info(`${stock.stock} kdDiffDownCross, price: ${price}, K: ${roundToN(condition3.lastK, 2)}, D: ${roundToN(condition3.lastD, 2)}, 是否看漲：${config.kdDiffDownCross.up ? '是' : '否'}`);
   };
   if (condition4.result) {
     triggered[stock.stock]['kdDownCross'] = true;
-    alertOnceLogger.info(`${stock.stock} kdDownCross, price: ${price}, K: ${roundToN(condition4.lastK, 2)}, D: ${roundToN(condition4.lastD, 2)}`);
+    alertOnceLogger.info(`${stock.stock} kdDownCross, price: ${price}, K: ${roundToN(condition4.lastK, 2)}, D: ${roundToN(condition4.lastD, 2)}`, `是否看漲：${config.kdDownCross.up ? '是' : '否'}`);
   };
   if (condition5.result) {
     triggered[stock.stock]['smaUpCross'] = true;
-    alertOnceLogger.info(`${stock.stock} smaUpCross, price: ${price}, SMA: ${roundToN(condition5.lastSMA, 2)}`);
+    alertOnceLogger.info(`${stock.stock} smaUpCross, price: ${price}, SMA: ${roundToN(condition5.lastSMA, 2)}, 是否看漲：${config.smaUpCross.up ? '是' : '否'}`);
   };
   if (condition6.result) {
     triggered[stock.stock]['smaDownCross'] = true;
-    alertOnceLogger.info(`${stock.stock} smaDownCross, price: ${price}, SMA: ${roundToN(condition6.lastSMA, 2)}`);
+    alertOnceLogger.info(`${stock.stock} smaDownCross, price: ${price}, SMA: ${roundToN(condition6.lastSMA, 2)}, 是否看漲：${config.smaDownCross.up ? '是' : '否'}`);
   };
   if (condition7.result) {
     triggered[stock.stock]['smaShortUpCrossLong'] = true;
-    alertOnceLogger.info(`${stock.stock} smaShortUpCrossLong, price: ${price}, SMA_short: ${roundToN(condition7.shortSMA, 2)}, SMA_long: ${roundToN(condition7.longSMA, 2)}`);
+    alertOnceLogger.info(`${stock.stock} smaShortUpCrossLong, price: ${price}, SMA_short: ${roundToN(condition7.shortSMA, 2)}, SMA_long: ${roundToN(condition7.longSMA, 2)}, 是否看漲：${config.smaShortUpCrossLong.up ? '是' : '否'}`);
   };
   if (condition8.result) {
     triggered[stock.stock]['smaShortDownCrossLong'] = true;
-    alertOnceLogger.info(`${stock.stock} smaShortDownCrossLong, price: ${price}, SMA_short: ${roundToN(condition8.shortSMA, 2)}, SMA_long: ${roundToN(condition8.longSMA, 2)}`);
+    alertOnceLogger.info(`${stock.stock} smaShortDownCrossLong, price: ${price}, SMA_short: ${roundToN(condition8.shortSMA, 2)}, SMA_long: ${roundToN(condition8.longSMA, 2)}, 是否看漲：${config.smaShortDownCrossLong.up ? '是' : '否'}`);
   };
   if (condition9.result) {
     triggered[stock.stock]['bbandDownCross'] = true;
-    alertOnceLogger.info(`${stock.stock} bbandDownCross, price: ${price}, bband: ${roundToN(condition9.lastLowerBand, 2)}`);
+    alertOnceLogger.info(`${stock.stock} bbandDownCross, price: ${price}, bband: ${roundToN(condition9.lastLowerBand, 2)}, 是否看漲：${config.bbandDownCross.up ? '是' : '否'}`);
   };
   if (condition10.result) {
     triggered[stock.stock]['bbandUpCross'] = true;
-    alertOnceLogger.info(`${stock.stock} bbandUpCross, price: ${price}, bband: ${roundToN(condition10.lastUpperBand, 2)}`);
+    alertOnceLogger.info(`${stock.stock} bbandUpCross, price: ${price}, bband: ${roundToN(condition10.lastUpperBand, 2)}, 是否看漲：${config.bbandUpCross.up ? '是' : '否'}`);
   };
   if (condition11.result) {
     triggered[stock.stock]['bbandDownCrossMiddle'] = true;
-    alertOnceLogger.info(`${stock.stock} bbandDownCrossMiddle, price: ${price}, bband: ${roundToN(condition11.lastMiddleBand, 2)}`);
+    alertOnceLogger.info(`${stock.stock} bbandDownCrossMiddle, price: ${price}, bband: ${roundToN(condition11.lastMiddleBand, 2)}, 是否看漲：${config.bbandDownCrossMiddle.up ? '是' : '否'}`);
   };
   if (condition12.result) {
     triggered[stock.stock]['bbandUpCrossMiddle'] = true;
-    alertOnceLogger.info(`${stock.stock} bbandUpCrossMiddle, price: ${price}, bband: ${roundToN(condition12.lastMiddleBand, 2)}`);
+    alertOnceLogger.info(`${stock.stock} bbandUpCrossMiddle, price: ${price}, bband: ${roundToN(condition12.lastMiddleBand, 2)}`, `是否看漲：${config.bbandUpCrossMiddle.up ? '是' : '否'}`);
   };
 }
 
@@ -109,51 +110,180 @@ const alert = async (stock) => {
   // TODO: 對log內容做一修改，讓他更好閱讀
   if (condition1.result) {
     triggered[stock.stock]['kdUpCross'] = true;
-    alertOnceLogger.info(`${stock.stock} kdUpCross, price: ${price}, K: ${roundToN(condition1.lastK, 2)}, D: ${roundToN(condition1.lastD, 2)}`);
+    // line message
+    const lineMessage = `\n股票代號: ${stock.stock}
+產業別: ${stock.industry}
+條件: K值向上穿越D值
+股價: ${price}
+${config.kdUpCross.params.fastK}日K: ${roundToN(condition1.lastK, 2)}
+${config.kdUpCross.params.slowD}日D: ${roundToN(condition1.lastD, 2)}
+是否看漲：${config.kdUpCross.up ? '是' : '否'}`;
+    sendLineMsg(lineMessage);
+
+    alertOnceLogger.info(`${stock.stock} kdUpCross, price: ${price}, K: ${roundToN(condition1.lastK, 2)}, D: ${roundToN(condition1.lastD, 2)}, 是否看漲：${config.kdUpCross.up ? '是' : '否'}`);
   };
-  if (condition2.result) {
+  if (condition2.result) { // kdDiffUpCross
     triggered[stock.stock]['kdDiffUpCross'] = true;
-    alertOnceLogger.info(`${stock.stock} kdDiffUpCross, price: ${price}, K: ${roundToN(condition2.lastK, 2)}, D: ${roundToN(condition2.lastD, 2)}`);
+    // line message
+    const lineMessage = `\n股票代號: ${stock.stock}
+產業別: ${stock.industry}
+條件: K值即將向上穿越D值
+設定差值: ${config.kdDiffUpCross.params.diff}
+股價: ${price}
+${config.kdDiffUpCross.params.fastK}日K: ${roundToN(condition2.lastK, 2)}
+${config.kdDiffUpCross.params.slowD}日D: ${roundToN(condition2.lastD, 2)}
+是否看漲：${config.kdDiffUpCross.up ? '是' : '否'}`;
+    sendLineMsg(lineMessage);
+
+    alertOnceLogger.info(`${stock.stock} kdDiffUpCross, price: ${price}, K: ${roundToN(condition2.lastK, 2)}, D: ${roundToN(condition2.lastD, 2)}, 是否看漲：${config.kdDiffUpCross.up ? '是' : '否'}`);
   };
-  if (condition3.result) {
+  if (condition3.result) { // kdDiffDownCross
     triggered[stock.stock]['kdDiffDownCross'] = true;
-    alertOnceLogger.info(`${stock.stock} kdDiffDownCross, price: ${price}, K: ${roundToN(condition3.lastK, 2)}, D: ${roundToN(condition3.lastD, 2)}`);
+    // line message
+    const lineMessage = `\n股票代號: ${stock.stock}
+產業別: ${stock.industry}
+條件: K值即將向下穿越D值
+設定差值: ${config.kdDiffDownCross.params.diff}
+股價: ${price}
+${config.kdDiffDownCross.params.fastK}日K: ${roundToN(condition3.lastK, 2)}
+${config.kdDiffDownCross.params.slowD}日D: ${roundToN(condition3.lastD, 2)}
+是否看漲：${config.kdDiffDownCross.up ? '是' : '否'}`;
+    sendLineMsg(lineMessage);
+
+    alertOnceLogger.info(`${stock.stock} kdDiffDownCross, price: ${price}, K: ${roundToN(condition3.lastK, 2)}, D: ${roundToN(condition3.lastD, 2)}, 是否看漲：${config.kdDiffDownCross.up ? '是' : '否'}`);
   };
-  if (condition4.result) {
+  if (condition4.result) { // kdDownCross
     triggered[stock.stock]['kdDownCross'] = true;
-    alertOnceLogger.info(`${stock.stock} kdDownCross, price: ${price}, K: ${roundToN(condition4.lastK, 2)}, D: ${roundToN(condition4.lastD, 2)}`);
+    // line message
+    const lineMessage = `\n股票代號: ${stock.stock}
+產業別: ${stock.industry}
+條件: K值向下穿越D值
+股價: ${price}
+${config.kdDownCross.params.fastK}日K: ${roundToN(condition4.lastK, 2)}
+${config.kdDownCross.params.slowD}日D: ${roundToN(condition4.lastD, 2)}
+是否看漲：${config.kdDownCross.up ? '是' : '否'}`;
+    sendLineMsg(lineMessage);
+
+    alertOnceLogger.info(`${stock.stock} kdDownCross, price: ${price}, K: ${roundToN(condition4.lastK, 2)}, D: ${roundToN(condition4.lastD, 2)}`, `是否看漲：${config.kdDownCross.up ? '是' : '否'}`);
   };
-  if (condition5.result) {
+  if (condition5.result) { // smaUpCross
     triggered[stock.stock]['smaUpCross'] = true;
-    alertOnceLogger.info(`${stock.stock} smaUpCross, price: ${price}, SMA: ${roundToN(condition5.lastSMA, 2)}`);
+    // line message
+    const lineMessage = `\n股票代號: ${stock.stock}
+產業別: ${stock.industry}
+條件: 股價向上穿越${config.smaUpCross.params.sma}日均線
+設定差值: ${config.smaUpCross.params.diff}
+股價: ${price} 
+${config.smaUpCross.params.period}日均線: ${roundToN(condition5.lastSMA, 2)}
+是否看漲：${config.smaUpCross.up ? '是' : '否'}`;
+    sendLineMsg(lineMessage);
+
+    alertOnceLogger.info(`${stock.stock} smaUpCross, price: ${price}, SMA: ${roundToN(condition5.lastSMA, 2)}, 是否看漲：${config.smaUpCross.up ? '是' : '否'}`);
   };
-  if (condition6.result) {
+  if (condition6.result) { // smaDownCross
     triggered[stock.stock]['smaDownCross'] = true;
-    alertOnceLogger.info(`${stock.stock} smaDownCross, price: ${price}, SMA: ${roundToN(condition6.lastSMA, 2)}`);
+    // line message
+    const lineMessage = `\n股票代號: ${stock.stock}
+產業別: ${stock.industry}
+條件: 股價向下穿越${config.smaDownCross.params.period}日均線
+設定差值: ${config.smaDownCross.params.diff}
+股價: ${price}
+${config.smaDownCross.params.period}日均線: ${roundToN(condition6.lastSMA, 2)}
+是否看漲：${config.smaDownCross.up ? '是' : '否'}`;
+    sendLineMsg(lineMessage);
+
+    alertOnceLogger.info(`${stock.stock} smaDownCross, price: ${price}, SMA: ${roundToN(condition6.lastSMA, 2)}, 是否看漲：${config.smaDownCross.up ? '是' : '否'}`);
   };
-  if (condition7.result) {
+  if (condition7.result) { // smaShortUpCrossLong
     triggered[stock.stock]['smaShortUpCrossLong'] = true;
-    alertOnceLogger.info(`${stock.stock} smaShortUpCrossLong, price: ${price}, SMA_short: ${roundToN(condition7.shortSMA, 2)}, SMA_long: ${roundToN(condition7.longSMA, 2)}`);
+    // line message
+    const lineMessage = `\n股票代號: ${stock.stock}
+產業別: ${stock.industry}
+條件: ${config.smaShortUpCrossLong.params.shortPeriod}日均線向上穿越${config.smaShortUpCrossLong.params.longPeriod}日均線
+設定差值: ${config.smaShortUpCrossLong.params.diff}
+股價: ${price}
+${config.smaShortUpCrossLong.params.shortPeriod}日均線: ${roundToN(condition7.shortSMA, 2)}
+${config.smaShortUpCrossLong.params.longPeriod}日均線: ${roundToN(condition7.longSMA, 2)}
+是否看漲：${config.smaShortUpCrossLong.up ? '是' : '否'}`;
+    sendLineMsg(lineMessage);
+
+    alertOnceLogger.info(`${stock.stock} smaShortUpCrossLong, price: ${price}, SMA_short: ${roundToN(condition7.shortSMA, 2)}, SMA_long: ${roundToN(condition7.longSMA, 2)}, 是否看漲：${config.smaShortUpCrossLong.up ? '是' : '否'}`);
   };
-  if (condition8.result) {
+  if (condition8.result) { // smaShortDownCrossLong
     triggered[stock.stock]['smaShortDownCrossLong'] = true;
-    alertOnceLogger.info(`${stock.stock} smaShortDownCrossLong, price: ${price}, SMA_short: ${roundToN(condition8.shortSMA, 2)}, SMA_long: ${roundToN(condition8.longSMA, 2)}`);
+    // line message
+    const lineMessage = `\n股票代號: ${stock.stock}
+產業別: ${stock.industry}
+條件: ${config.smaShortDownCrossLong.params.shortPeriod}日均線向下穿越${config.smaShortDownCrossLong.params.longPeriod}日均線
+設定差值: ${config.smaShortDownCrossLong.params.diff}
+股價: ${price}
+${config.smaShortDownCrossLong.params.shortPeriod}日均線: ${roundToN(condition8.shortSMA, 2)}
+${config.smaShortDownCrossLong.params.longPeriod}日均線: ${roundToN(condition8.longSMA, 2)}
+是否看漲：${config.smaShortDownCrossLong.up ? '是' : '否'}`;
+    sendLineMsg(lineMessage);
+
+    alertOnceLogger.info(`${stock.stock} smaShortDownCrossLong, price: ${price}, SMA_short: ${roundToN(condition8.shortSMA, 2)}, SMA_long: ${roundToN(condition8.longSMA, 2)}, 是否看漲：${config.smaShortDownCrossLong.up ? '是' : '否'}`);
   };
-  if (condition9.result) {
+  if (condition9.result) { // bbandDownCross
     triggered[stock.stock]['bbandDownCross'] = true;
-    alertOnceLogger.info(`${stock.stock} bbandDownCross, price: ${price}, bband: ${roundToN(condition9.lastLowerBand, 2)}`);
+    // line message
+    const lineMessage = `\n股票代號: ${stock.stock}
+產業別: ${stock.industry}
+條件: 股價向下穿越${config.bbandDownCross.params.period}日Bollinger Band下軌
+設定差值: ${config.bbandDownCross.params.diff}
+標準差: ${config.bbandDownCross.params.std}
+股價: ${price}
+${config.bbandDownCross.params.period}日Bollinger Band下軌: ${roundToN(condition9.lastLowerBand, 2)}
+是否看漲：${config.bbandDownCross.up ? '是' : '否'}`;
+    sendLineMsg(lineMessage);
+
+    alertOnceLogger.info(`${stock.stock} bbandDownCross, price: ${price}, bband: ${roundToN(condition9.lastLowerBand, 2)}, 是否看漲：${config.bbandDownCross.up ? '是' : '否'}`);
   };
-  if (condition10.result) {
+  if (condition10.result) { // bbandUpCross
     triggered[stock.stock]['bbandUpCross'] = true;
-    alertOnceLogger.info(`${stock.stock} bbandUpCross, price: ${price}, bband: ${roundToN(condition10.lastUpperBand, 2)}`);
+    // line message
+    const lineMessage = `\n股票代號: ${stock.stock}
+產業別: ${stock.industry}
+條件: 股價向上穿越${config.bbandUpCross.params.period}日Bollinger Band上軌
+設定差值: ${config.bbandUpCross.params.diff}
+標準差: ${config.bbandUpCross.params.std}
+股價: ${price}
+${config.bbandUpCross.params.period}日Bollinger Band上軌: ${roundToN(condition10.lastUpperBand, 2)}
+是否看漲：${config.bbandUpCross.up ? '是' : '否'}`;
+    sendLineMsg(lineMessage);
+
+    alertOnceLogger.info(`${stock.stock} bbandUpCross, price: ${price}, bband: ${roundToN(condition10.lastUpperBand, 2)}, 是否看漲：${config.bbandUpCross.up ? '是' : '否'}`);
   };
-  if (condition11.result) {
+  if (condition11.result) { // bbandDownCrossMiddle
     triggered[stock.stock]['bbandDownCrossMiddle'] = true;
-    alertOnceLogger.info(`${stock.stock} bbandDownCrossMiddle, price: ${price}, bband: ${roundToN(condition11.lastMiddleBand, 2)}`);
+    // line message
+    const lineMessage = `\n股票代號: ${stock.stock}
+產業別: ${stock.industry}
+條件: 股價向下穿越${config.bbandDownCrossMiddle.params.period}日Bollinger Band中軌
+設定差值: ${config.bbandDownCrossMiddle.params.diff}
+標準差: ${config.bbandDownCrossMiddle.params.std}
+股價: ${price}
+${config.bbandDownCrossMiddle.params.period}日Bollinger Band中軌: ${roundToN(condition11.lastMiddleBand, 2)}
+是否看漲：${config.bbandDownCrossMiddle.up ? '是' : '否'}`;
+    sendLineMsg(lineMessage);
+    
+    alertOnceLogger.info(`${stock.stock} bbandDownCrossMiddle, price: ${price}, bband: ${roundToN(condition11.lastMiddleBand, 2)}, 是否看漲：${config.bbandDownCrossMiddle.up ? '是' : '否'}`);
   };
-  if (condition12.result) {
+  if (condition12.result) { // bbandUpCrossMiddle
     triggered[stock.stock]['bbandUpCrossMiddle'] = true;
-    alertOnceLogger.info(`${stock.stock} bbandUpCrossMiddle, price: ${price}, bband: ${roundToN(condition12.lastMiddleBand, 2)}`);
+    // line message
+    const lineMessage = `\n股票代號: ${stock.stock}
+產業別: ${stock.industry}
+條件: 股價向上穿越${config.bbandUpCrossMiddle.params.period}日Bollinger Band中軌
+設定差值: ${config.bbandUpCrossMiddle.params.diff}
+標準差: ${config.bbandUpCrossMiddle.params.std}
+股價: ${price}
+${config.bbandUpCrossMiddle.params.period}日Bollinger Band中軌: ${roundToN(condition12.lastMiddleBand, 2)}
+是否看漲：${config.bbandUpCrossMiddle.up ? '是' : '否'}`;
+    sendLineMsg(lineMessage);
+
+
+    alertOnceLogger.info(`${stock.stock} bbandUpCrossMiddle, price: ${price}, bband: ${roundToN(condition12.lastMiddleBand, 2)}`, `是否看漲：${config.bbandUpCrossMiddle.up ? '是' : '否'}`);
   };
 }
 
