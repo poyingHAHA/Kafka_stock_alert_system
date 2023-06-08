@@ -26,7 +26,7 @@ const produceFront = async(data) => {
       compression: CompressionTypes.GZIP,
       // 以stock_id為key，以確保順序
       messages: [
-        { key: data.id, value: JSON.stringify({...data, timestamp: dayjs().format('YYYY-MM-DD HH:mm:ss')}) },
+        { key: data.id, value: JSON.stringify({...data}) },
       ],
     });
   } catch(err){

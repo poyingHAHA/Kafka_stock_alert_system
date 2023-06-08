@@ -45,11 +45,17 @@ const alertOnce = async (stock) => {
     triggered[stock.stock]['kdUpCross'] = true;
     produceFront({
       id: stock.id,
-      stock: stock.stock, 
-      price: price, 
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
       type: 'kdUpCross',
-      message: `${stock.stock} kdUpCross, price: ${price}, K: ${roundToN(condition1.lastK, 2)}, D: ${roundToN(condition1.lastD, 2)}, 是否看漲：${config.kdUpCross.up ? '是' : '否'}`
-    });
+      msg: 'K值向上穿越D值',
+      lastK: roundToN(condition1.lastK, 2),
+      lastD: roundToN(condition1.lastD, 2),
+      up: config.kdUpCross.up,
+      timestamp: stock.timestamp,
+      init: true // 是否一開始就觸發
+    })
     alertOnceLogger.info(`${stock.stock} kdUpCross, price: ${price}, K: ${roundToN(condition1.lastK, 2)}, D: ${roundToN(condition1.lastD, 2)}, 是否看漲：${config.kdUpCross.up ? '是' : '否'}`);
   };
   if (condition2.result) {
@@ -57,10 +63,17 @@ const alertOnce = async (stock) => {
     produceFront({
       id: stock.id,
       stock: stock.stock,
+      industry: stock.industry,
       price: price,
       type: 'kdDiffUpCross',
-      message: `${stock.stock} kdDiffUpCross, price: ${price}, K: ${roundToN(condition2.lastK, 2)}, D: ${roundToN(condition2.lastD, 2)}, 是否看漲：${config.kdDiffUpCross.up ? '是' : '否'}`
-    });
+      msg: 'K值即將向上穿越D值',
+      lastK: roundToN(condition2.lastK, 2),
+      lastD: roundToN(condition2.lastD, 2),
+      diff: config.kdDiffUpCross.params.diff,
+      up: config.kdDiffUpCross.up,
+      timestamp: stock.timestamp,
+      init: true // 是否一開始就觸發
+    })
     alertOnceLogger.info(`${stock.stock} kdDiffUpCross, price: ${price}, K: ${roundToN(condition2.lastK, 2)}, D: ${roundToN(condition2.lastD, 2)}, 是否看漲：${config.kdDiffUpCross.up ? '是' : '否'}`);
   };
   if (condition3.result) {
@@ -68,46 +81,177 @@ const alertOnce = async (stock) => {
     produceFront({
       id: stock.id,
       stock: stock.stock,
+      industry: stock.industry,
       price: price,
       type: 'kdDiffDownCross',
-      message: `${stock.stock} kdDiffDownCross, price: ${price}, K: ${roundToN(condition3.lastK, 2)}, D: ${roundToN(condition3.lastD, 2)}, 是否看漲：${config.kdDiffDownCross.up ? '是' : '否'}`
-    });
+      msg: 'K值即將向下穿越D值',
+      lastK: roundToN(condition3.lastK, 2),
+      lastD: roundToN(condition3.lastD, 2),
+      diff: config.kdDiffDownCross.params.diff,
+      up: config.kdDiffDownCross.up,
+      timestamp: stock.timestamp,
+      init: true // 是否一開始就觸發
+    })
     alertOnceLogger.info(`${stock.stock} kdDiffDownCross, price: ${price}, K: ${roundToN(condition3.lastK, 2)}, D: ${roundToN(condition3.lastD, 2)}, 是否看漲：${config.kdDiffDownCross.up ? '是' : '否'}`);
   };
   if (condition4.result) {
     triggered[stock.stock]['kdDownCross'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'kdDownCross',
+      msg: 'K值向下穿越D值',
+      lastK: roundToN(condition4.lastK, 2),
+      lastD: roundToN(condition4.lastD, 2),
+      up: config.kdDownCross.up,
+      timestamp: stock.timestamp,
+      init: true // 是否一開始就觸發
+    })
+
     alertOnceLogger.info(`${stock.stock} kdDownCross, price: ${price}, K: ${roundToN(condition4.lastK, 2)}, D: ${roundToN(condition4.lastD, 2)}`, `是否看漲：${config.kdDownCross.up ? '是' : '否'}`);
   };
   if (condition5.result) {
     triggered[stock.stock]['smaUpCross'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'smaUpCross',
+      msg: `股價向上穿越${config.smaUpCross.params.sma}日均線`,
+      lastSMA: roundToN(condition5.lastSMA, 2),
+      diff: config.smaUpCross.params.diff,
+      up: config.smaUpCross.up,
+      timestamp: stock.timestamp,
+      init: true // 是否一開始就觸發
+    })
     alertOnceLogger.info(`${stock.stock} smaUpCross, price: ${price}, SMA: ${roundToN(condition5.lastSMA, 2)}, 是否看漲：${config.smaUpCross.up ? '是' : '否'}`);
   };
   if (condition6.result) {
     triggered[stock.stock]['smaDownCross'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'smaDownCross',
+      msg: `股價向下穿越${config.smaDownCross.params.period}日均線`,
+      lastSMA: roundToN(condition6.lastSMA, 2),
+      diff: config.smaDownCross.params.diff,
+      up: config.smaDownCross.up,
+      timestamp: stock.timestamp,
+      init: true // 是否一開始就觸發
+    })
     alertOnceLogger.info(`${stock.stock} smaDownCross, price: ${price}, SMA: ${roundToN(condition6.lastSMA, 2)}, 是否看漲：${config.smaDownCross.up ? '是' : '否'}`);
   };
   if (condition7.result) {
     triggered[stock.stock]['smaShortUpCrossLong'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'smaShortUpCrossLong',
+      msg: `${config.smaShortUpCrossLong.params.shortPeriod}日均線向上穿越${config.smaShortUpCrossLong.params.longPeriod}日均線`,
+      shortSMA: roundToN(condition7.shortSMA, 2),
+      longSMA: roundToN(condition7.longSMA, 2),
+      diff: config.smaShortUpCrossLong.params.diff,
+      up: config.smaShortUpCrossLong.up,
+      timestamp: stock.timestamp,
+      init: true // 是否一開始就觸發
+    })
     alertOnceLogger.info(`${stock.stock} smaShortUpCrossLong, price: ${price}, SMA_short: ${roundToN(condition7.shortSMA, 2)}, SMA_long: ${roundToN(condition7.longSMA, 2)}, 是否看漲：${config.smaShortUpCrossLong.up ? '是' : '否'}`);
   };
   if (condition8.result) {
     triggered[stock.stock]['smaShortDownCrossLong'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'smaShortDownCrossLong',
+      msg: `${config.smaShortDownCrossLong.params.shortPeriod}日均線向下穿越${config.smaShortDownCrossLong.params.longPeriod}日均線`,
+      shortSMA: roundToN(condition8.shortSMA, 2),
+      longSMA: roundToN(condition8.longSMA, 2),
+      diff: config.smaShortDownCrossLong.params.diff,
+      up: config.smaShortDownCrossLong.up,
+      timestamp: stock.timestamp,
+      init: true // 是否一開始就觸發
+    })
     alertOnceLogger.info(`${stock.stock} smaShortDownCrossLong, price: ${price}, SMA_short: ${roundToN(condition8.shortSMA, 2)}, SMA_long: ${roundToN(condition8.longSMA, 2)}, 是否看漲：${config.smaShortDownCrossLong.up ? '是' : '否'}`);
   };
   if (condition9.result) {
     triggered[stock.stock]['bbandDownCross'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'bbandDownCross',
+      msg: `${config.bbandDownCross.params.period}日Bollinger Band下軌`,
+      Lowbband: roundToN(condition9.lastLowerBand, 2),
+      diff: config.bbandDownCross.params.diff,
+      std: config.bbandDownCross.params.std,
+      up: config.bbandDownCross.up,
+      timestamp: stock.timestamp,
+      init: true // 是否一開始就觸發
+    })
     alertOnceLogger.info(`${stock.stock} bbandDownCross, price: ${price}, bband: ${roundToN(condition9.lastLowerBand, 2)}, 是否看漲：${config.bbandDownCross.up ? '是' : '否'}`);
   };
   if (condition10.result) {
     triggered[stock.stock]['bbandUpCross'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'bbandUpCross',
+      msg: `股價向上穿越${config.bbandUpCross.params.period}日Bollinger Band上軌`,
+      Upbband: roundToN(condition10.lastUpperBand, 2),
+      diff: config.bbandUpCross.params.diff,
+      std: config.bbandUpCross.params.std,
+      up: config.bbandUpCross.up,
+      timestamp: stock.timestamp,
+      init: true // 是否一開始就觸發
+    })
     alertOnceLogger.info(`${stock.stock} bbandUpCross, price: ${price}, bband: ${roundToN(condition10.lastUpperBand, 2)}, 是否看漲：${config.bbandUpCross.up ? '是' : '否'}`);
   };
   if (condition11.result) {
     triggered[stock.stock]['bbandDownCrossMiddle'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'bbandDownCrossMiddle',
+      msg: `股價向下穿越${config.bbandDownCrossMiddle.params.period}日Bollinger Band中軌`,
+      Middlebband: roundToN(condition11.lastMiddleBand, 2),
+      diff: config.bbandDownCrossMiddle.params.diff,
+      std: config.bbandDownCrossMiddle.params.std,
+      up: config.bbandDownCrossMiddle.up,
+      timestamp: stock.timestamp,
+      init: true // 是否一開始就觸發
+    })
     alertOnceLogger.info(`${stock.stock} bbandDownCrossMiddle, price: ${price}, bband: ${roundToN(condition11.lastMiddleBand, 2)}, 是否看漲：${config.bbandDownCrossMiddle.up ? '是' : '否'}`);
   };
   if (condition12.result) {
     triggered[stock.stock]['bbandUpCrossMiddle'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'bbandUpCrossMiddle',
+      msg: `股價向上穿越${config.bbandUpCrossMiddle.params.period}日Bollinger Band中軌`,
+      Middlebband: roundToN(condition12.lastMiddleBand, 2),
+      diff: config.bbandUpCrossMiddle.params.diff,
+      std: config.bbandUpCrossMiddle.params.std,
+      up: config.bbandUpCrossMiddle.up,
+      timestamp: stock.timestamp,
+      init: false // 是否一開始就觸發
+    })
     alertOnceLogger.info(`${stock.stock} bbandUpCrossMiddle, price: ${price}, bband: ${roundToN(condition12.lastMiddleBand, 2)}`, `是否看漲：${config.bbandUpCrossMiddle.up ? '是' : '否'}`);
   };
 }
@@ -132,6 +276,20 @@ const alert = async (stock) => {
   // TODO: 對log內容做一修改，讓他更好閱讀
   if (condition1.result) {
     triggered[stock.stock]['kdUpCross'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'kdUpCross',
+      msg: 'K值向上穿越D值',
+      lastK: roundToN(condition1.lastK, 2),
+      lastD: roundToN(condition1.lastD, 2),
+      up: config.kdUpCross.up,
+      timestamp: stock.timestamp,
+      init: false // 是否一開始就觸發
+    })
+
     // line message
     const lineMessage = `\n股票代號: ${stock.stock}
 產業別: ${stock.industry}
@@ -146,6 +304,21 @@ ${config.kdUpCross.params.slowD}日D: ${roundToN(condition1.lastD, 2)}
   };
   if (condition2.result) { // kdDiffUpCross
     triggered[stock.stock]['kdDiffUpCross'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'kdDiffUpCross',
+      msg: 'K值即將向上穿越D值',
+      lastK: roundToN(condition2.lastK, 2),
+      lastD: roundToN(condition2.lastD, 2),
+      diff: config.kdDiffUpCross.params.diff,
+      up: config.kdDiffUpCross.up,
+      timestamp: stock.timestamp,
+      init: false // 是否一開始就觸發
+    })
+
     // line message
     const lineMessage = `\n股票代號: ${stock.stock}
 產業別: ${stock.industry}
@@ -161,6 +334,21 @@ ${config.kdDiffUpCross.params.slowD}日D: ${roundToN(condition2.lastD, 2)}
   };
   if (condition3.result) { // kdDiffDownCross
     triggered[stock.stock]['kdDiffDownCross'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'kdDiffDownCross',
+      msg: 'K值即將向下穿越D值',
+      lastK: roundToN(condition3.lastK, 2),
+      lastD: roundToN(condition3.lastD, 2),
+      diff: config.kdDiffDownCross.params.diff,
+      up: config.kdDiffDownCross.up,
+      timestamp: stock.timestamp,
+      init: false // 是否一開始就觸發
+    })
+
     // line message
     const lineMessage = `\n股票代號: ${stock.stock}
 產業別: ${stock.industry}
@@ -176,6 +364,20 @@ ${config.kdDiffDownCross.params.slowD}日D: ${roundToN(condition3.lastD, 2)}
   };
   if (condition4.result) { // kdDownCross
     triggered[stock.stock]['kdDownCross'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'kdDownCross',
+      msg: 'K值向下穿越D值',
+      lastK: roundToN(condition4.lastK, 2),
+      lastD: roundToN(condition4.lastD, 2),
+      up: config.kdDownCross.up,
+      timestamp: stock.timestamp,
+      init: false // 是否一開始就觸發
+    })
+
     // line message
     const lineMessage = `\n股票代號: ${stock.stock}
 產業別: ${stock.industry}
@@ -190,6 +392,19 @@ ${config.kdDownCross.params.slowD}日D: ${roundToN(condition4.lastD, 2)}
   };
   if (condition5.result) { // smaUpCross
     triggered[stock.stock]['smaUpCross'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'smaUpCross',
+      msg: `股價向上穿越${config.smaUpCross.params.sma}日均線`,
+      lastSMA: roundToN(condition5.lastSMA, 2),
+      diff: config.smaUpCross.params.diff,
+      up: config.smaUpCross.up,
+      timestamp: stock.timestamp,
+      init: false // 是否一開始就觸發
+    })
     // line message
     const lineMessage = `\n股票代號: ${stock.stock}
 產業別: ${stock.industry}
@@ -204,6 +419,19 @@ ${config.smaUpCross.params.period}日均線: ${roundToN(condition5.lastSMA, 2)}
   };
   if (condition6.result) { // smaDownCross
     triggered[stock.stock]['smaDownCross'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'smaDownCross',
+      msg: `股價向下穿越${config.smaDownCross.params.period}日均線`,
+      lastSMA: roundToN(condition6.lastSMA, 2),
+      diff: config.smaDownCross.params.diff,
+      up: config.smaDownCross.up,
+      timestamp: stock.timestamp,
+      init: false // 是否一開始就觸發
+    })
     // line message
     const lineMessage = `\n股票代號: ${stock.stock}
 產業別: ${stock.industry}
@@ -218,6 +446,20 @@ ${config.smaDownCross.params.period}日均線: ${roundToN(condition6.lastSMA, 2)
   };
   if (condition7.result) { // smaShortUpCrossLong
     triggered[stock.stock]['smaShortUpCrossLong'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'smaShortUpCrossLong',
+      msg: `${config.smaShortUpCrossLong.params.shortPeriod}日均線向上穿越${config.smaShortUpCrossLong.params.longPeriod}日均線`,
+      shortSMA: roundToN(condition7.shortSMA, 2),
+      longSMA: roundToN(condition7.longSMA, 2),
+      diff: config.smaShortUpCrossLong.params.diff,
+      up: config.smaShortUpCrossLong.up,
+      timestamp: stock.timestamp,
+      init: false // 是否一開始就觸發
+    })
     // line message
     const lineMessage = `\n股票代號: ${stock.stock}
 產業別: ${stock.industry}
@@ -233,6 +475,21 @@ ${config.smaShortUpCrossLong.params.longPeriod}日均線: ${roundToN(condition7.
   };
   if (condition8.result) { // smaShortDownCrossLong
     triggered[stock.stock]['smaShortDownCrossLong'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'smaShortDownCrossLong',
+      msg: `${config.smaShortDownCrossLong.params.shortPeriod}日均線向下穿越${config.smaShortDownCrossLong.params.longPeriod}日均線`,
+      shortSMA: roundToN(condition8.shortSMA, 2),
+      longSMA: roundToN(condition8.longSMA, 2),
+      diff: config.smaShortDownCrossLong.params.diff,
+      up: config.smaShortDownCrossLong.up,
+      timestamp: stock.timestamp,
+      init: false // 是否一開始就觸發
+    })
+
     // line message
     const lineMessage = `\n股票代號: ${stock.stock}
 產業別: ${stock.industry}
@@ -248,6 +505,20 @@ ${config.smaShortDownCrossLong.params.longPeriod}日均線: ${roundToN(condition
   };
   if (condition9.result) { // bbandDownCross
     triggered[stock.stock]['bbandDownCross'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'bbandDownCross',
+      msg: `${config.bbandDownCross.params.period}日Bollinger Band下軌`,
+      Lowbband: roundToN(condition9.lastLowerBand, 2),
+      diff: config.bbandDownCross.params.diff,
+      std: config.bbandDownCross.params.std,
+      up: config.bbandDownCross.up,
+      timestamp: stock.timestamp,
+      init: false // 是否一開始就觸發
+    })
     // line message
     const lineMessage = `\n股票代號: ${stock.stock}
 產業別: ${stock.industry}
@@ -263,6 +534,20 @@ ${config.bbandDownCross.params.period}日Bollinger Band下軌: ${roundToN(condit
   };
   if (condition10.result) { // bbandUpCross
     triggered[stock.stock]['bbandUpCross'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'bbandUpCross',
+      msg: `股價向上穿越${config.bbandUpCross.params.period}日Bollinger Band上軌`,
+      Upbband: roundToN(condition10.lastUpperBand, 2),
+      diff: config.bbandUpCross.params.diff,
+      std: config.bbandUpCross.params.std,
+      up: config.bbandUpCross.up,
+      timestamp: stock.timestamp,
+      init: false // 是否一開始就觸發
+    })
     // line message
     const lineMessage = `\n股票代號: ${stock.stock}
 產業別: ${stock.industry}
@@ -278,6 +563,20 @@ ${config.bbandUpCross.params.period}日Bollinger Band上軌: ${roundToN(conditio
   };
   if (condition11.result) { // bbandDownCrossMiddle
     triggered[stock.stock]['bbandDownCrossMiddle'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'bbandDownCrossMiddle',
+      msg: `股價向下穿越${config.bbandDownCrossMiddle.params.period}日Bollinger Band中軌`,
+      Middlebband: roundToN(condition11.lastMiddleBand, 2),
+      diff: config.bbandDownCrossMiddle.params.diff,
+      std: config.bbandDownCrossMiddle.params.std,
+      up: config.bbandDownCrossMiddle.up,
+      timestamp: stock.timestamp,
+      init: false // 是否一開始就觸發
+    })
     // line message
     const lineMessage = `\n股票代號: ${stock.stock}
 產業別: ${stock.industry}
@@ -293,6 +592,20 @@ ${config.bbandDownCrossMiddle.params.period}日Bollinger Band中軌: ${roundToN(
   };
   if (condition12.result) { // bbandUpCrossMiddle
     triggered[stock.stock]['bbandUpCrossMiddle'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      industry: stock.industry,
+      price: price,
+      type: 'bbandUpCrossMiddle',
+      msg: `股價向上穿越${config.bbandUpCrossMiddle.params.period}日Bollinger Band中軌`,
+      Middlebband: roundToN(condition12.lastMiddleBand, 2),
+      diff: config.bbandUpCrossMiddle.params.diff,
+      std: config.bbandUpCrossMiddle.params.std,
+      up: config.bbandUpCrossMiddle.up,
+      timestamp: stock.timestamp,
+      init: false // 是否一開始就觸發
+    })
     // line message
     const lineMessage = `\n股票代號: ${stock.stock}
 產業別: ${stock.industry}
