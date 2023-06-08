@@ -33,56 +33,57 @@ const alertOnce = async (stock) => {
   const condition10 = await bbandUpCross({ price: stock.price, period: 5, NumOfDev: 2 });
   const condition11 = await bbandDownCrossMiddle({ price: stock.price, period: 5, NumOfDev: 2 });
   const condition12 = await bbandUpCrossMiddle({ price: stock.price, period: 5, NumOfDev: 2 });
+  const price = stock.price.close[stock.price.close.length-1];
   
   // TODO: 對於第一次就觸發的條件，做一些處理
   // TODO: 對log內容做一修改，讓他更好閱讀
   if (condition1.result) {
     triggered[stock.stock]['kdUpCross'] = true;
-    alertOnceLogger.info(`${stock.stock} kdUpCross, price: ${stock.price}, K: ${condition1.lastK}, D: ${condition1.lastD}`);
+    alertOnceLogger.info(`${stock.stock} kdUpCross, price: ${price}, K: ${condition1.lastK}, D: ${condition1.lastD}`);
   };
   if (condition2.result) {
     triggered[stock.stock]['kdDiffUpCross'] = true;
-    alertOnceLogger.info(`${stock.stock} kdDiffUpCross, price: ${stock.price}, K: ${condition2.lastK}, D: ${condition2.lastD}`);
+    alertOnceLogger.info(`${stock.stock} kdDiffUpCross, price: ${price}, K: ${condition2.lastK}, D: ${condition2.lastD}`);
   };
   if (condition3.result) {
     triggered[stock.stock]['kdDiffDownCross'] = true;
-    alertOnceLogger.info(`${stock.stock} kdDiffDownCross, price: ${stock.price}, K: ${condition3.lastK}, D: ${condition3.lastD}`);
+    alertOnceLogger.info(`${stock.stock} kdDiffDownCross, price: ${price}, K: ${condition3.lastK}, D: ${condition3.lastD}`);
   };
   if (condition4.result) {
     triggered[stock.stock]['kdDownCross'] = true;
-    alertOnceLogger.info(`${stock.stock} kdDownCross, price: ${stock.price}, K: ${condition4.lastK}, D: ${condition4.lastD}`);
+    alertOnceLogger.info(`${stock.stock} kdDownCross, price: ${price}, K: ${condition4.lastK}, D: ${condition4.lastD}`);
   };
   if (condition5.result) {
     triggered[stock.stock]['smaUpCross'] = true;
-    alertOnceLogger.info(`${stock.stock} smaUpCross, price: ${stock.price}, price: ${stock.price}, SMA: ${condition5.lastSMA}`);
+    alertOnceLogger.info(`${stock.stock} smaUpCross, price: ${price}, SMA: ${condition5.lastSMA}`);
   };
   if (condition6.result) {
     triggered[stock.stock]['smaDownCross'] = true;
-    alertOnceLogger.info(`${stock.stock} smaDownCross, price: ${stock.price}, price: ${stock.price}, SMA: ${condition6.lastSMA}`);
+    alertOnceLogger.info(`${stock.stock} smaDownCross, price: ${price}, SMA: ${condition6.lastSMA}`);
   };
   if (condition7.result) {
     triggered[stock.stock]['smaShortUpCrossLong'] = true;
-    alertOnceLogger.info(`${stock.stock} smaShortUpCrossLong, price: ${stock.price}, price: ${stock.price}, SMA_short: ${condition7.shortSMA}, SMA_long: ${condition7.longSMA}`);
+    alertOnceLogger.info(`${stock.stock} smaShortUpCrossLong, price: ${price}, SMA_short: ${condition7.shortSMA}, SMA_long: ${condition7.longSMA}`);
   };
   if (condition8.result) {
     triggered[stock.stock]['smaShortDownCrossLong'] = true;
-    alertOnceLogger.info(`${stock.stock} smaShortDownCrossLong, price: ${stock.price}, price: ${stock.price}, SMA_short: ${condition8.shortSMA}, SMA_long: ${condition8.longSMA}`);
+    alertOnceLogger.info(`${stock.stock} smaShortDownCrossLong, price: ${price}, SMA_short: ${condition8.shortSMA}, SMA_long: ${condition8.longSMA}`);
   };
   if (condition9.result) {
     triggered[stock.stock]['bbandDownCross'] = true;
-    alertOnceLogger.info(`${stock.stock} bbandDownCross, price: ${stock.price}, price: ${stock.price}, bband: ${condition9.lastLowerBand}`);
+    alertOnceLogger.info(`${stock.stock} bbandDownCross, price: ${price}, bband: ${condition9.lastLowerBand}`);
   };
   if (condition10.result) {
     triggered[stock.stock]['bbandUpCross'] = true;
-    alertOnceLogger.info(`${stock.stock} bbandUpCross, price: ${stock.price}, price: ${stock.price}, bband: ${condition10.lastUpperBand}`);
+    alertOnceLogger.info(`${stock.stock} bbandUpCross, price: ${price}, bband: ${condition10.lastUpperBand}`);
   };
   if (condition11.result) {
     triggered[stock.stock]['bbandDownCrossMiddle'] = true;
-    alertOnceLogger.info(`${stock.stock} bbandDownCrossMiddle, price: ${stock.price}, price: ${stock.price}, bband: ${condition11.lastMiddleBand}`);
+    alertOnceLogger.info(`${stock.stock} bbandDownCrossMiddle, price: ${price}, bband: ${condition11.lastMiddleBand}`);
   };
   if (condition12.result) {
     triggered[stock.stock]['bbandUpCrossMiddle'] = true;
-    alertOnceLogger.info(`${stock.stock} bbandUpCrossMiddle, price: ${stock.price}, price: ${stock.price}, bband: ${condition12.lastMiddleBand}`);
+    alertOnceLogger.info(`${stock.stock} bbandUpCrossMiddle, price: ${price}, bband: ${condition12.lastMiddleBand}`);
   };
 }
 
@@ -100,56 +101,57 @@ const alert = async (stock) => {
   const condition10 = await bbandUpCross({ price: stock.price, period: 5, NumOfDev: 2 });
   const condition11 = await bbandDownCrossMiddle({ price: stock.price, period: 5, NumOfDev: 2 });
   const condition12 = await bbandUpCrossMiddle({ price: stock.price, period: 5, NumOfDev: 2 });
+  const price = stock.price.close[stock.price.close.length-1];
 
   // TODO: 對於之後觸發的條件，做一些處理
   // TODO: 對log內容做一修改，讓他更好閱讀
   if (condition1.result && !triggered[stock.stock]['kdUpCross']) {
     triggered[stock.stock]['kdUpCross'] = true;
-    alertLogger.info(`${stock.stock} kdUpCross, price: ${stock.price}, K: ${condition1.lastK}, D: ${condition1.lastD}`);
+    alertLogger.info(`${stock.stock} kdUpCross, price: ${price}, K: ${condition1.lastK}, D: ${condition1.lastD}`);
   };
   if (condition2.result && !triggered[stock.stock]['kdDiffUpCross']) {
     triggered[stock.stock]['kdDiffUpCross'] = true;
-    alertLogger.info(`${stock.stock} kdDiffUpCross, price: ${stock.price}, K: ${condition2.lastK}, D: ${condition2.lastD}`);
+    alertLogger.info(`${stock.stock} kdDiffUpCross, price: ${price}, K: ${condition2.lastK}, D: ${condition2.lastD}`);
   };
   if (condition3.result && !triggered[stock.stock]['kdDiffDownCross']) {
     triggered[stock.stock]['kdDiffDownCross'] = true;
-    alertLogger.info(`${stock.stock} kdDiffDownCross, price: ${stock.price}, K: ${condition3.lastK}, D: ${condition3.lastD}`);
+    alertLogger.info(`${stock.stock} kdDiffDownCross, price: ${price}, K: ${condition3.lastK}, D: ${condition3.lastD}`);
   };
   if (condition4.result && !triggered[stock.stock]['kdDownCross']) {
     triggered[stock.stock]['kdDownCross'] = true;
-    alertLogger.info(`${stock.stock} kdDownCross, price: ${stock.price}, K: ${condition4.lastK}, D: ${condition4.lastD}`);
+    alertLogger.info(`${stock.stock} kdDownCross, price: ${price}, K: ${condition4.lastK}, D: ${condition4.lastD}`);
   };
   if (condition5.result && !triggered[stock.stock]['smaUpCross']) {
     triggered[stock.stock]['smaUpCross'] = true;
-    alertLogger.info(`${stock.stock} smaUpCross, price: ${stock.price}, price: ${stock.price}, SMA: ${condition5.lastSMA}`);
+    alertLogger.info(`${stock.stock} smaUpCross, price: ${price}, SMA: ${condition5.lastSMA}`);
   };
   if (condition6.result && !triggered[stock.stock]['smaDownCross']) {
     triggered[stock.stock]['smaDownCross'] = true;
-    alertLogger.info(`${stock.stock} smaDownCross, price: ${stock.price}, price: ${stock.price}, SMA: ${condition6.lastSMA}`);
+    alertLogger.info(`${stock.stock} smaDownCross, price: ${price}, SMA: ${condition6.lastSMA}`);
   };
   if (condition7.result && !triggered[stock.stock]['smaShortUpCrossLong']) {
     triggered[stock.stock]['smaShortUpCrossLong'] = true;
-    alertLogger.info(`${stock.stock} smaShortUpCrossLong, price: ${stock.price}, price: ${stock.price}, SMA_short: ${condition7.shortSMA}, SMA_long: ${condition7.longSMA}`);
+    alertLogger.info(`${stock.stock} smaShortUpCrossLong, price: ${price}, SMA_short: ${condition7.shortSMA}, SMA_long: ${condition7.longSMA}`);
   };
   if (condition8.result && !triggered[stock.stock]['smaShortDownCrossLong']) {
     triggered[stock.stock]['smaShortDownCrossLong'] = true;
-    alertLogger.info(`${stock.stock} smaShortDownCrossLong, price: ${stock.price}, price: ${stock.price}, SMA_short: ${condition8.shortSMA}, SMA_long: ${condition8.longSMA}`);
+    alertLogger.info(`${stock.stock} smaShortDownCrossLong, price: ${price}, SMA_short: ${condition8.shortSMA}, SMA_long: ${condition8.longSMA}`);
   };
   if (condition9.result && !triggered[stock.stock]['bbandDownCross']) {
     triggered[stock.stock]['bbandDownCross'] = true;
-    alertLogger.info(`${stock.stock} bbandDownCross, price: ${stock.price}, price: ${stock.price}, bband: ${condition9.lastLowerBand}`);
+    alertLogger.info(`${stock.stock} bbandDownCross, price: ${price}, bband: ${condition9.lastLowerBand}`);
   };
   if (condition10.result && !triggered[stock.stock]['bbandUpCross']) {
     triggered[stock.stock]['bbandUpCross'] = true;
-    alertLogger.info(`${stock.stock} bbandUpCross, price: ${stock.price}, price: ${stock.price}, bband: ${condition10.lastUpperBand}`);
+    alertLogger.info(`${stock.stock} bbandUpCross, price: ${price}, bband: ${condition10.lastUpperBand}`);
   };
   if (condition11.result && !triggered[stock.stock]['bbandDownCrossMiddle']) {
     triggered[stock.stock]['bbandDownCrossMiddle'] = true;
-    alertLogger.info(`${stock.stock} bbandDownCrossMiddle, price: ${stock.price}, price: ${stock.price}, bband: ${condition11.lastMiddleBand}`);
+    alertLogger.info(`${stock.stock} bbandDownCrossMiddle, price: ${price}, bband: ${condition11.lastMiddleBand}`);
   };
   if (condition12.result && !triggered[stock.stock]['bbandUpCrossMiddle']) {
     triggered[stock.stock]['bbandUpCrossMiddle'] = true;
-    alertLogger.info(`${stock.stock} bbandUpCrossMiddle, price: ${stock.price}, price: ${stock.price}, bband: ${condition12.lastMiddleBand}`);
+    alertLogger.info(`${stock.stock} bbandUpCrossMiddle, price: ${price}, bband: ${condition12.lastMiddleBand}`);
   };
 
 }

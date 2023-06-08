@@ -26,7 +26,7 @@ const stockIDs = require('./stockID.json');
   await producer.connect();
 
   // 每10秒爬取一次台積電的股價
-  let job = new CronJob('*/10 * * * * *', function() {
+  let job = new CronJob('*/30 * * * * *', function() {
     // let stock_id = '2330';
     for(stock_id of stockIDs.semi) {
     // 爬取股價
@@ -40,7 +40,7 @@ const stockIDs = require('./stockID.json');
           price: toTalibFormat(data.ta),
           timestamp: dayjs().format('YYYY-MM-DD HH:mm:ss')
         }
-        console.log(`${data.id} sent`)
+        console.log(`${dayjs().format('YYYY-MM-DD HH:mm:ss')}: ${data.id} sent`)
 
         // 將資料送到kafka
         await producer.send({
