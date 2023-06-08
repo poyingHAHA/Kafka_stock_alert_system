@@ -1,0 +1,18 @@
+[
+  {
+    "id": "3536",
+    "stock": "3536誠創",
+    "price": 2.92,
+    "type": "kdDiffDownCross",
+    "message": "3536誠創 kdDiffDownCross, price: 2.92, K: 0, D: 0, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "3536",
+    "stock": "3536誠創",
+    "price": 2.92,
+    "type": "kdDiffUpCross",
+    "message": "3536誠創 kdDiffUpCross, price: 2.92, K: 0, D: 0, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

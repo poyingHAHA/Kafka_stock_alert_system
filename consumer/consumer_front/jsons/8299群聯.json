@@ -1,0 +1,18 @@
+[
+  {
+    "id": "8299",
+    "stock": "8299群聯",
+    "price": 424,
+    "type": "kdDiffUpCross",
+    "message": "8299群聯 kdDiffUpCross, price: 424, K: 54.78, D: 48.96, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "8299",
+    "stock": "8299群聯",
+    "price": 424,
+    "type": "kdUpCross",
+    "message": "8299群聯 kdUpCross, price: 424, K: 54.78, D: 48.96, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "2388",
+    "stock": "2388威盛",
+    "price": 84.8,
+    "type": "kdDiffDownCross",
+    "message": "2388威盛 kdDiffDownCross, price: 84.8, K: 74.33, D: 78.88, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "2388",
+    "stock": "2388威盛",
+    "price": 84.8,
+    "type": "kdDiffUpCross",
+    "message": "2388威盛 kdDiffUpCross, price: 84.8, K: 74.33, D: 78.88, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

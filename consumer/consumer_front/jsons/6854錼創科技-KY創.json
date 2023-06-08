@@ -1,0 +1,18 @@
+[
+  {
+    "id": "6854",
+    "stock": "6854錼創科技-KY創",
+    "price": 100.5,
+    "type": "kdDiffUpCross",
+    "message": "6854錼創科技-KY創 kdDiffUpCross, price: 100.5, K: 63.33, D: 54.32, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "6854",
+    "stock": "6854錼創科技-KY創",
+    "price": 100.5,
+    "type": "kdUpCross",
+    "message": "6854錼創科技-KY創 kdUpCross, price: 100.5, K: 63.33, D: 54.32, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

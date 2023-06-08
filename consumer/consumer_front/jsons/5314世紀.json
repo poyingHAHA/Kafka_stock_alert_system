@@ -1,0 +1,18 @@
+[
+  {
+    "id": "5314",
+    "stock": "5314世紀",
+    "price": 23.2,
+    "type": "kdDiffUpCross",
+    "message": "5314世紀 kdDiffUpCross, price: 23.2, K: 49.65, D: 37.37, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "5314",
+    "stock": "5314世紀",
+    "price": 23.2,
+    "type": "kdUpCross",
+    "message": "5314世紀 kdUpCross, price: 23.2, K: 49.65, D: 37.37, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

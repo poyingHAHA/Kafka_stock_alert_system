@@ -4,6 +4,7 @@ const { smaUpCross, smaDownCross, smaShortUpCrossLong, smaShortDownCrossLong } =
 const config = require('../config/condition.config');
 const { roundToN } = require('../utils/number.util');
 const { sendLineMsg } = require('../utils/line.util');
+const produceFront = require('../producer/producer_front');
 const log4js = require('log4js');
 log4js.configure({
   appenders: { 
@@ -42,14 +43,35 @@ const alertOnce = async (stock) => {
   // TODO: 對log內容做一修改，讓他更好閱讀
   if (condition1.result) {
     triggered[stock.stock]['kdUpCross'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock, 
+      price: price, 
+      type: 'kdUpCross',
+      message: `${stock.stock} kdUpCross, price: ${price}, K: ${roundToN(condition1.lastK, 2)}, D: ${roundToN(condition1.lastD, 2)}, 是否看漲：${config.kdUpCross.up ? '是' : '否'}`
+    });
     alertOnceLogger.info(`${stock.stock} kdUpCross, price: ${price}, K: ${roundToN(condition1.lastK, 2)}, D: ${roundToN(condition1.lastD, 2)}, 是否看漲：${config.kdUpCross.up ? '是' : '否'}`);
   };
   if (condition2.result) {
     triggered[stock.stock]['kdDiffUpCross'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      price: price,
+      type: 'kdDiffUpCross',
+      message: `${stock.stock} kdDiffUpCross, price: ${price}, K: ${roundToN(condition2.lastK, 2)}, D: ${roundToN(condition2.lastD, 2)}, 是否看漲：${config.kdDiffUpCross.up ? '是' : '否'}`
+    });
     alertOnceLogger.info(`${stock.stock} kdDiffUpCross, price: ${price}, K: ${roundToN(condition2.lastK, 2)}, D: ${roundToN(condition2.lastD, 2)}, 是否看漲：${config.kdDiffUpCross.up ? '是' : '否'}`);
   };
   if (condition3.result) {
     triggered[stock.stock]['kdDiffDownCross'] = true;
+    produceFront({
+      id: stock.id,
+      stock: stock.stock,
+      price: price,
+      type: 'kdDiffDownCross',
+      message: `${stock.stock} kdDiffDownCross, price: ${price}, K: ${roundToN(condition3.lastK, 2)}, D: ${roundToN(condition3.lastD, 2)}, 是否看漲：${config.kdDiffDownCross.up ? '是' : '否'}`
+    });
     alertOnceLogger.info(`${stock.stock} kdDiffDownCross, price: ${price}, K: ${roundToN(condition3.lastK, 2)}, D: ${roundToN(condition3.lastD, 2)}, 是否看漲：${config.kdDiffDownCross.up ? '是' : '否'}`);
   };
   if (condition4.result) {

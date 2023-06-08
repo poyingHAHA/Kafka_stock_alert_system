@@ -1,0 +1,18 @@
+[
+  {
+    "id": "5269",
+    "stock": "5269祥碩",
+    "price": 1140,
+    "type": "kdDiffDownCross",
+    "message": "5269祥碩 kdDiffDownCross, price: 1140, K: 17.5, D: 18.01, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "5269",
+    "stock": "5269祥碩",
+    "price": 1140,
+    "type": "kdDiffUpCross",
+    "message": "5269祥碩 kdDiffUpCross, price: 1140, K: 17.5, D: 18.01, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

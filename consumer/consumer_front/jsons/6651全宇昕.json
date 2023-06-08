@@ -1,0 +1,18 @@
+[
+  {
+    "id": "6651",
+    "stock": "6651全宇昕",
+    "price": 79.3,
+    "type": "kdDiffDownCross",
+    "message": "6651全宇昕 kdDiffDownCross, price: 79.3, K: 37.16, D: 39.44, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "6651",
+    "stock": "6651全宇昕",
+    "price": 79.3,
+    "type": "kdDiffUpCross",
+    "message": "6651全宇昕 kdDiffUpCross, price: 79.3, K: 37.16, D: 39.44, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

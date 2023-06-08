@@ -1,0 +1,26 @@
+[
+  {
+    "id": "3555",
+    "stock": "3555重鵬",
+    "price": 29.9,
+    "type": "kdUpCross",
+    "message": "3555重鵬 kdUpCross, price: 29.9, K: 100, D: 98.33, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "3555",
+    "stock": "3555重鵬",
+    "price": 29.9,
+    "type": "kdDiffDownCross",
+    "message": "3555重鵬 kdDiffDownCross, price: 29.9, K: 100, D: 98.33, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "3555",
+    "stock": "3555重鵬",
+    "price": 29.9,
+    "type": "kdDiffUpCross",
+    "message": "3555重鵬 kdDiffUpCross, price: 29.9, K: 100, D: 98.33, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

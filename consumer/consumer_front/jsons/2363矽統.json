@@ -1,0 +1,18 @@
+[
+  {
+    "id": "2363",
+    "stock": "2363矽統",
+    "price": 17.8,
+    "type": "kdDiffDownCross",
+    "message": "2363矽統 kdDiffDownCross, price: 17.8, K: 59.6, D: 63.38, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "2363",
+    "stock": "2363矽統",
+    "price": 17.8,
+    "type": "kdDiffUpCross",
+    "message": "2363矽統 kdDiffUpCross, price: 17.8, K: 59.6, D: 63.38, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

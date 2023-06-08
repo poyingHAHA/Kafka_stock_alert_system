@@ -1,0 +1,26 @@
+[
+  {
+    "id": "5302",
+    "stock": "5302太欣",
+    "price": 10.95,
+    "type": "kdUpCross",
+    "message": "5302太欣 kdUpCross, price: 10.95, K: 80.57, D: 76.89, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "5302",
+    "stock": "5302太欣",
+    "price": 10.95,
+    "type": "kdDiffDownCross",
+    "message": "5302太欣 kdDiffDownCross, price: 10.95, K: 80.57, D: 76.89, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "5302",
+    "stock": "5302太欣",
+    "price": 10.95,
+    "type": "kdDiffUpCross",
+    "message": "5302太欣 kdDiffUpCross, price: 10.95, K: 80.57, D: 76.89, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

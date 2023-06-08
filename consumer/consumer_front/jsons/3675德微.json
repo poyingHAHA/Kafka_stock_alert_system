@@ -1,0 +1,18 @@
+[
+  {
+    "id": "3675",
+    "stock": "3675德微",
+    "price": 298,
+    "type": "kdDiffDownCross",
+    "message": "3675德微 kdDiffDownCross, price: 298, K: 11.52, D: 13.13, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "3675",
+    "stock": "3675德微",
+    "price": 298,
+    "type": "kdDiffUpCross",
+    "message": "3675德微 kdDiffUpCross, price: 298, K: 11.52, D: 13.13, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

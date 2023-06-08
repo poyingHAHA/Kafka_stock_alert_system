@@ -1,0 +1,18 @@
+[
+  {
+    "id": "3122",
+    "stock": "3122笙泉",
+    "price": 25.3,
+    "type": "kdDiffDownCross",
+    "message": "3122笙泉 kdDiffDownCross, price: 25.3, K: 72.19, D: 77.04, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "3122",
+    "stock": "3122笙泉",
+    "price": 25.3,
+    "type": "kdDiffUpCross",
+    "message": "3122笙泉 kdDiffUpCross, price: 25.3, K: 72.19, D: 77.04, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

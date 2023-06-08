@@ -19,9 +19,9 @@ let once = require('./json/triggered.json');
       const history = await JSON.parse( message.value.toString() );
       // 排除掉一開始已經符合觸發條件的股票後就可以正常的執行alert
       // once: true, 表示已經觸發過
-      if(once[history.stock]["once"]) {
-        alert(history);
-      }
+      // if(once[history.stock]["once"]) {
+      //   alert(history);
+      // }
       // 如果該股票已經觸發過，就不會再觸發alertOnce，這樣可以避免重複觸發
       if(!once[history.stock]["once"]) {
         alertOnce(history)

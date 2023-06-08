@@ -1,0 +1,26 @@
+[
+  {
+    "id": "3034",
+    "stock": "3034聯詠",
+    "price": 455.5,
+    "type": "kdUpCross",
+    "message": "3034聯詠 kdUpCross, price: 455.5, K: 98.77, D: 97.16, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "3034",
+    "stock": "3034聯詠",
+    "price": 455.5,
+    "type": "kdDiffDownCross",
+    "message": "3034聯詠 kdDiffDownCross, price: 455.5, K: 98.77, D: 97.16, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "3034",
+    "stock": "3034聯詠",
+    "price": 455.5,
+    "type": "kdDiffUpCross",
+    "message": "3034聯詠 kdDiffUpCross, price: 455.5, K: 98.77, D: 97.16, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

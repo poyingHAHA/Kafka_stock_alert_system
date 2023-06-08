@@ -1,0 +1,18 @@
+[
+  {
+    "id": "6789",
+    "stock": "6789采鈺",
+    "price": 245,
+    "type": "kdDiffDownCross",
+    "message": "6789采鈺 kdDiffDownCross, price: 245, K: 78.48, D: 79.74, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "6789",
+    "stock": "6789采鈺",
+    "price": 245,
+    "type": "kdDiffUpCross",
+    "message": "6789采鈺 kdDiffUpCross, price: 245, K: 78.48, D: 79.74, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

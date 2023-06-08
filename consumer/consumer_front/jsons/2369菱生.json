@@ -1,0 +1,18 @@
+[
+  {
+    "id": "2369",
+    "stock": "2369菱生",
+    "price": 14.85,
+    "type": "kdDiffDownCross",
+    "message": "2369菱生 kdDiffDownCross, price: 14.85, K: 79.06, D: 81.81, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "2369",
+    "stock": "2369菱生",
+    "price": 14.85,
+    "type": "kdDiffUpCross",
+    "message": "2369菱生 kdDiffUpCross, price: 14.85, K: 79.06, D: 81.81, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

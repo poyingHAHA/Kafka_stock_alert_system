@@ -1,0 +1,26 @@
+[
+  {
+    "id": "2329",
+    "stock": "2329華泰",
+    "price": 22.5,
+    "type": "kdUpCross",
+    "message": "2329華泰 kdUpCross, price: 22.5, K: 89.82, D: 85.85, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "2329",
+    "stock": "2329華泰",
+    "price": 22.5,
+    "type": "kdDiffDownCross",
+    "message": "2329華泰 kdDiffDownCross, price: 22.5, K: 89.82, D: 85.85, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "2329",
+    "stock": "2329華泰",
+    "price": 22.5,
+    "type": "kdDiffUpCross",
+    "message": "2329華泰 kdDiffUpCross, price: 22.5, K: 89.82, D: 85.85, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

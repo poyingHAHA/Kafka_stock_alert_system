@@ -1,0 +1,26 @@
+[
+  {
+    "id": "4968",
+    "stock": "4968立積",
+    "price": 175.5,
+    "type": "kdUpCross",
+    "message": "4968立積 kdUpCross, price: 175.5, K: 39.41, D: 36.81, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "4968",
+    "stock": "4968立積",
+    "price": 175.5,
+    "type": "kdDiffDownCross",
+    "message": "4968立積 kdDiffDownCross, price: 175.5, K: 39.41, D: 36.81, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "4968",
+    "stock": "4968立積",
+    "price": 175.5,
+    "type": "kdDiffUpCross",
+    "message": "4968立積 kdDiffUpCross, price: 175.5, K: 39.41, D: 36.81, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

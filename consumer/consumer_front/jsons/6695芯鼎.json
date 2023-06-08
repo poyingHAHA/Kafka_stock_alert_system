@@ -1,0 +1,18 @@
+[
+  {
+    "id": "6695",
+    "stock": "6695芯鼎",
+    "price": 45,
+    "type": "kdDiffDownCross",
+    "message": "6695芯鼎 kdDiffDownCross, price: 45, K: 54.02, D: 57.84, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "6695",
+    "stock": "6695芯鼎",
+    "price": 45,
+    "type": "kdDiffUpCross",
+    "message": "6695芯鼎 kdDiffUpCross, price: 45, K: 54.02, D: 57.84, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

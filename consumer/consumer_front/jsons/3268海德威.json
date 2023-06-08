@@ -1,0 +1,18 @@
+[
+  {
+    "id": "3268",
+    "stock": "3268海德威",
+    "price": 22.25,
+    "type": "kdDiffDownCross",
+    "message": "3268海德威 kdDiffDownCross, price: 22.25, K: 45.96, D: 49.91, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "3268",
+    "stock": "3268海德威",
+    "price": 22.25,
+    "type": "kdDiffUpCross",
+    "message": "3268海德威 kdDiffUpCross, price: 22.25, K: 45.96, D: 49.91, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

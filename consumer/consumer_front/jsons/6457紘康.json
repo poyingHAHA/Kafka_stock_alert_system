@@ -1,0 +1,18 @@
+[
+  {
+    "id": "6457",
+    "stock": "6457紘康",
+    "price": 52.1,
+    "type": "kdDiffDownCross",
+    "message": "6457紘康 kdDiffDownCross, price: 52.1, K: 25.12, D: 26.53, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "6457",
+    "stock": "6457紘康",
+    "price": 52.1,
+    "type": "kdDiffUpCross",
+    "message": "6457紘康 kdDiffUpCross, price: 52.1, K: 25.12, D: 26.53, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

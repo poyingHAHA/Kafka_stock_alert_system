@@ -1,0 +1,18 @@
+[
+  {
+    "id": "2436",
+    "stock": "2436偉詮電",
+    "price": 55.5,
+    "type": "kdDiffDownCross",
+    "message": "2436偉詮電 kdDiffDownCross, price: 55.5, K: 51.51, D: 55.13, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "2436",
+    "stock": "2436偉詮電",
+    "price": 55.5,
+    "type": "kdDiffUpCross",
+    "message": "2436偉詮電 kdDiffUpCross, price: 55.5, K: 51.51, D: 55.13, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

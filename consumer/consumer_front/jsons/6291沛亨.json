@@ -1,0 +1,18 @@
+[
+  {
+    "id": "6291",
+    "stock": "6291沛亨",
+    "price": 246,
+    "type": "kdDiffDownCross",
+    "message": "6291沛亨 kdDiffDownCross, price: 246, K: 83, D: 83.64, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "6291",
+    "stock": "6291沛亨",
+    "price": 246,
+    "type": "kdDiffUpCross",
+    "message": "6291沛亨 kdDiffUpCross, price: 246, K: 83, D: 83.64, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

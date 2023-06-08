@@ -1,0 +1,18 @@
+[
+  {
+    "id": "3014",
+    "stock": "3014聯陽",
+    "price": 118.5,
+    "type": "kdDiffUpCross",
+    "message": "3014聯陽 kdDiffUpCross, price: 118.5, K: 77.88, D: 71.21, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "3014",
+    "stock": "3014聯陽",
+    "price": 118.5,
+    "type": "kdUpCross",
+    "message": "3014聯陽 kdUpCross, price: 118.5, K: 77.88, D: 71.21, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

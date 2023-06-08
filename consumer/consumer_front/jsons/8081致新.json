@@ -1,0 +1,18 @@
+[
+  {
+    "id": "8081",
+    "stock": "8081致新",
+    "price": 200.5,
+    "type": "kdDiffUpCross",
+    "message": "8081致新 kdDiffUpCross, price: 200.5, K: 78.73, D: 68.39, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "8081",
+    "stock": "8081致新",
+    "price": 200.5,
+    "type": "kdUpCross",
+    "message": "8081致新 kdUpCross, price: 200.5, K: 78.73, D: 68.39, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

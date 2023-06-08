@@ -1,0 +1,18 @@
+[
+  {
+    "id": "6485",
+    "stock": "6485點序",
+    "price": 110,
+    "type": "kdDiffDownCross",
+    "message": "6485點序 kdDiffDownCross, price: 110, K: 78.04, D: 80.01, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "6485",
+    "stock": "6485點序",
+    "price": 110,
+    "type": "kdDiffUpCross",
+    "message": "6485點序 kdDiffUpCross, price: 110, K: 78.04, D: 80.01, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "6532",
+    "stock": "6532瑞耘",
+    "price": 66.2,
+    "type": "kdDiffUpCross",
+    "message": "6532瑞耘 kdDiffUpCross, price: 66.2, K: 90.09, D: 80.51, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "6532",
+    "stock": "6532瑞耘",
+    "price": 66.2,
+    "type": "kdUpCross",
+    "message": "6532瑞耘 kdUpCross, price: 66.2, K: 90.09, D: 80.51, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

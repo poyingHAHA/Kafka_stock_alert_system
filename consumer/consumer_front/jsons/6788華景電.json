@@ -1,0 +1,26 @@
+[
+  {
+    "id": "6788",
+    "stock": "6788華景電",
+    "price": 131,
+    "type": "kdUpCross",
+    "message": "6788華景電 kdUpCross, price: 131, K: 80.52, D: 77.54, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "6788",
+    "stock": "6788華景電",
+    "price": 131,
+    "type": "kdDiffDownCross",
+    "message": "6788華景電 kdDiffDownCross, price: 131, K: 80.52, D: 77.54, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "6788",
+    "stock": "6788華景電",
+    "price": 131,
+    "type": "kdDiffUpCross",
+    "message": "6788華景電 kdDiffUpCross, price: 131, K: 80.52, D: 77.54, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

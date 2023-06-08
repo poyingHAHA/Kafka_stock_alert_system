@@ -1,0 +1,26 @@
+[
+  {
+    "id": "6679",
+    "stock": "6679鈺太",
+    "price": 331.5,
+    "type": "kdUpCross",
+    "message": "6679鈺太 kdUpCross, price: 331.5, K: 71.08, D: 68.37, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "6679",
+    "stock": "6679鈺太",
+    "price": 331.5,
+    "type": "kdDiffDownCross",
+    "message": "6679鈺太 kdDiffDownCross, price: 331.5, K: 71.08, D: 68.37, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "6679",
+    "stock": "6679鈺太",
+    "price": 331.5,
+    "type": "kdDiffUpCross",
+    "message": "6679鈺太 kdDiffUpCross, price: 331.5, K: 71.08, D: 68.37, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

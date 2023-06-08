@@ -1,0 +1,18 @@
+[
+  {
+    "id": "4991",
+    "stock": "4991環宇-KY",
+    "price": 30.55,
+    "type": "kdDiffDownCross",
+    "message": "4991環宇-KY kdDiffDownCross, price: 30.55, K: 70.29, D: 72.75, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "4991",
+    "stock": "4991環宇-KY",
+    "price": 30.55,
+    "type": "kdDiffUpCross",
+    "message": "4991環宇-KY kdDiffUpCross, price: 30.55, K: 70.29, D: 72.75, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

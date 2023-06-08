@@ -1,0 +1,18 @@
+[
+  {
+    "id": "4971",
+    "stock": "4971IET-KY",
+    "price": 58.3,
+    "type": "kdDiffDownCross",
+    "message": "4971IET-KY kdDiffDownCross, price: 58.3, K: 69.89, D: 74.72, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "4971",
+    "stock": "4971IET-KY",
+    "price": 58.3,
+    "type": "kdDiffUpCross",
+    "message": "4971IET-KY kdDiffUpCross, price: 58.3, K: 69.89, D: 74.72, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

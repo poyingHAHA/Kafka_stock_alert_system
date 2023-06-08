@@ -1,0 +1,18 @@
+[
+  {
+    "id": "6640",
+    "stock": "6640均華",
+    "price": 94.5,
+    "type": "kdDiffUpCross",
+    "message": "6640均華 kdDiffUpCross, price: 94.5, K: 73.74, D: 68.26, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "6640",
+    "stock": "6640均華",
+    "price": 94.5,
+    "type": "kdUpCross",
+    "message": "6640均華 kdUpCross, price: 94.5, K: 73.74, D: 68.26, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

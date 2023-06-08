@@ -1,0 +1,26 @@
+[
+  {
+    "id": "2401",
+    "stock": "2401凌陽",
+    "price": 26.85,
+    "type": "kdUpCross",
+    "message": "2401凌陽 kdUpCross, price: 26.85, K: 80, D: 77.64, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "2401",
+    "stock": "2401凌陽",
+    "price": 26.85,
+    "type": "kdDiffDownCross",
+    "message": "2401凌陽 kdDiffDownCross, price: 26.85, K: 80, D: 77.64, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "2401",
+    "stock": "2401凌陽",
+    "price": 26.85,
+    "type": "kdDiffUpCross",
+    "message": "2401凌陽 kdDiffUpCross, price: 26.85, K: 80, D: 77.64, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

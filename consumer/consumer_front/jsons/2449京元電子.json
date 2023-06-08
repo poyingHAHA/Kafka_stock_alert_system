@@ -1,0 +1,18 @@
+[
+  {
+    "id": "2449",
+    "stock": "2449京元電子",
+    "price": 54,
+    "type": "kdDiffDownCross",
+    "message": "2449京元電子 kdDiffDownCross, price: 54, K: 81.51, D: 84.58, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "2449",
+    "stock": "2449京元電子",
+    "price": 54,
+    "type": "kdDiffUpCross",
+    "message": "2449京元電子 kdDiffUpCross, price: 54, K: 81.51, D: 84.58, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "3450",
+    "stock": "3450聯鈞",
+    "price": 38.35,
+    "type": "kdDiffDownCross",
+    "message": "3450聯鈞 kdDiffDownCross, price: 38.35, K: 68.91, D: 71.95, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "3450",
+    "stock": "3450聯鈞",
+    "price": 38.35,
+    "type": "kdDiffUpCross",
+    "message": "3450聯鈞 kdDiffUpCross, price: 38.35, K: 68.91, D: 71.95, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "8054",
+    "stock": "8054安國",
+    "price": 36.15,
+    "type": "kdUpCross",
+    "message": "8054安國 kdUpCross, price: 36.15, K: 79.51, D: 78.06, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "8054",
+    "stock": "8054安國",
+    "price": 36.15,
+    "type": "kdDiffDownCross",
+    "message": "8054安國 kdDiffDownCross, price: 36.15, K: 79.51, D: 78.06, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "8054",
+    "stock": "8054安國",
+    "price": 36.15,
+    "type": "kdDiffUpCross",
+    "message": "8054安國 kdDiffUpCross, price: 36.15, K: 79.51, D: 78.06, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

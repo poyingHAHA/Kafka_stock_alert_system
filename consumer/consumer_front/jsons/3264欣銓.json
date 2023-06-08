@@ -1,0 +1,18 @@
+[
+  {
+    "id": "3264",
+    "stock": "3264欣銓",
+    "price": 59.4,
+    "type": "kdDiffDownCross",
+    "message": "3264欣銓 kdDiffDownCross, price: 59.4, K: 91.77, D: 93.19, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "3264",
+    "stock": "3264欣銓",
+    "price": 59.4,
+    "type": "kdDiffUpCross",
+    "message": "3264欣銓 kdDiffUpCross, price: 59.4, K: 91.77, D: 93.19, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

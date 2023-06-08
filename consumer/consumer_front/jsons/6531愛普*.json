@@ -1,0 +1,18 @@
+[
+  {
+    "id": "6531",
+    "stock": "6531愛普*",
+    "price": 323.5,
+    "type": "kdDiffDownCross",
+    "message": "6531愛普* kdDiffDownCross, price: 323.5, K: 42.66, D: 47.16, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "6531",
+    "stock": "6531愛普*",
+    "price": 323.5,
+    "type": "kdDiffUpCross",
+    "message": "6531愛普* kdDiffUpCross, price: 323.5, K: 42.66, D: 47.16, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

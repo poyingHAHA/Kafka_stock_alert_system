@@ -1,0 +1,18 @@
+[
+  {
+    "id": "3680",
+    "stock": "3680家登",
+    "price": 362,
+    "type": "kdDiffUpCross",
+    "message": "3680家登 kdDiffUpCross, price: 362, K: 21.3, D: 11.19, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "3680",
+    "stock": "3680家登",
+    "price": 362,
+    "type": "kdUpCross",
+    "message": "3680家登 kdUpCross, price: 362, K: 21.3, D: 11.19, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

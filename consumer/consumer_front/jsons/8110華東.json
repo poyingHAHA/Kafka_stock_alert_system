@@ -1,0 +1,18 @@
+[
+  {
+    "id": "8110",
+    "stock": "8110華東",
+    "price": 13.8,
+    "type": "kdDiffDownCross",
+    "message": "8110華東 kdDiffDownCross, price: 13.8, K: 80.94, D: 81.77, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "8110",
+    "stock": "8110華東",
+    "price": 13.8,
+    "type": "kdDiffUpCross",
+    "message": "8110華東 kdDiffUpCross, price: 13.8, K: 80.94, D: 81.77, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

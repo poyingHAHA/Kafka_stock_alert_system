@@ -1,0 +1,18 @@
+[
+  {
+    "id": "8016",
+    "stock": "8016矽創",
+    "price": 234.5,
+    "type": "kdDiffDownCross",
+    "message": "8016矽創 kdDiffDownCross, price: 234.5, K: 82.55, D: 86.26, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "8016",
+    "stock": "8016矽創",
+    "price": 234.5,
+    "type": "kdDiffUpCross",
+    "message": "8016矽創 kdDiffUpCross, price: 234.5, K: 82.55, D: 86.26, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]

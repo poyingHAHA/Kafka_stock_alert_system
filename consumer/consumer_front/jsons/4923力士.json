@@ -1,0 +1,18 @@
+[
+  {
+    "id": "4923",
+    "stock": "4923力士",
+    "price": 42.05,
+    "type": "kdDiffDownCross",
+    "message": "4923力士 kdDiffDownCross, price: 42.05, K: 0.83, D: 3.01, 是否看漲：否",
+    "timestamp": "2023-06-08 23:28:51"
+  },
+  {
+    "id": "4923",
+    "stock": "4923力士",
+    "price": 42.05,
+    "type": "kdDiffUpCross",
+    "message": "4923力士 kdDiffUpCross, price: 42.05, K: 0.83, D: 3.01, 是否看漲：是",
+    "timestamp": "2023-06-08 23:28:51"
+  }
+]
