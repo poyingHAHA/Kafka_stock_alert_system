@@ -4,6 +4,8 @@ const axios = require('axios');
 const CronJob = require('cron').CronJob;
 const { kafka } = require('./broker/brokerClient.js');
 const {CompressionTypes} = require('kafkajs')
+const fs = require("fs");
+const path = require('path');
 const toTalibFormat = require('./utils/toTalibFormat.js');
 const dayjs = require('dayjs');
 const utc = require('dayjs/plugin/utc');
@@ -20,6 +22,7 @@ dayjs.tz.setDefault('Asia/Taipei'); // 請根據您的當地時區設定
 
 // 半導體174支股票id
 const stockIDs = require('./stockID.json');
+const backUpPath = path.join(__dirname, 'json', 'backUp.json');
 
 (async() => {
   // 連接broker
@@ -51,6 +54,26 @@ const stockIDs = require('./stockID.json');
           industry: "半導體" // 先寫死
         }
         console.log(`${dayjs().format('YYYY-MM-DD HH:mm:ss')}: ${data.id} sent`)
+        
+        // 備份資料
+        try {
+          if (fs.existsSync(backUpPath)) {
+            // 檔案存在，讀取現有資料並新增新資料
+            const fileData = fs.readFileSync(backUpPath, 'utf8');
+            let existingData = JSON.parse(fileData);
+            existingData.push(latestPrice);
+            fs.writeFileSync(backUpPath, JSON.stringify(existingData, null, 2), 'utf8');
+            // console.log('Data appended to file successfully.');
+          } else {
+            // 檔案不存在，創建新檔案並寫入資料
+            const newData = [latestPrice];
+            fs.writeFileSync(backUpPath, JSON.stringify(newData, null, 2), 'utf8');
+            console.log('File created and data written successfully.');
+          }
+        } catch (err) {
+          console.error('Error writing file:', err);
+        }
+        
 
         // 將資料送到kafka
         await producer.send({
