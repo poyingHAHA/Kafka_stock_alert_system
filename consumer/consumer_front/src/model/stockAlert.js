@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const stockAlertSchema = new mongoose.Schema({
+  id: { type: String, index: true },
   stock: { type: String, index: true },
   type: { type: String, index: true },
   timestamp: { type: Date, index: true },
@@ -10,6 +11,13 @@ const stockAlertSchema = new mongoose.Schema({
   msg: String,
   lastK: Number,
   lastD: Number,
+  shortSMA: Number,
+  longSMA: Number,
+  diff: Number,
+  std: Number,
+  Middlebband: Number,
+  Upperbband: Number,
+  Lowerbband: Number,
   up: Boolean
 },
 {

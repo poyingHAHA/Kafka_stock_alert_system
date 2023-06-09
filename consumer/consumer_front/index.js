@@ -3,7 +3,7 @@ dotenv.config();
 const { kafka } = require('./src/broker/brokerClient');
 const path = require('path');
 const fs = require("fs");
-const { stockAlert } = require('./src/model/index.js');
+const { stockAlert, stockBasic } = require('./src/model/index.js');
 
 const consumer = kafka.consumer({ groupId: process.env.CONSUMER_GROUP });
 const topic = process.env.STOCK_FRONT_TOPIC;
@@ -19,6 +19,11 @@ const topic = process.env.STOCK_FRONT_TOPIC;
       // 儲存資料到MongoDB
       const newStockAlert = new stockAlert(history);
       await newStockAlert.save();
+      const exist = await stockBasic.findOne({id: history.id});
+      if (!exist) {
+        const newStockBasic = new stockBasic(history);
+        await newStockBasic.save();
+      }
 
 
       // 下方為將資料存json檔案的方法
