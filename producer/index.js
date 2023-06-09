@@ -55,24 +55,24 @@ const backUpPath = path.join(__dirname, 'json', 'backUp.json');
         }
         console.log(`${dayjs().format('YYYY-MM-DD HH:mm:ss')}: ${data.id} sent`)
         
-        // 備份資料
-        try {
-          if (fs.existsSync(backUpPath)) {
-            // 檔案存在，讀取現有資料並新增新資料
-            const fileData = fs.readFileSync(backUpPath, 'utf8');
-            let existingData = JSON.parse(fileData);
-            existingData.push(latestPrice);
-            fs.writeFileSync(backUpPath, JSON.stringify(existingData, null, 2), 'utf8');
-            // console.log('Data appended to file successfully.');
-          } else {
-            // 檔案不存在，創建新檔案並寫入資料
-            const newData = [latestPrice];
-            fs.writeFileSync(backUpPath, JSON.stringify(newData, null, 2), 'utf8');
-            console.log('File created and data written successfully.');
-          }
-        } catch (err) {
-          console.error('Error writing file:', err);
-        }
+        // // 備份資料
+        // try {
+        //   if (fs.existsSync(backUpPath)) {
+        //     // 檔案存在，讀取現有資料並新增新資料
+        //     const fileData = fs.readFileSync(backUpPath, 'utf8');
+        //     let existingData = JSON.parse(fileData);
+        //     existingData.push(latestPrice);
+        //     fs.writeFileSync(backUpPath, JSON.stringify(existingData, null, 2), 'utf8');
+        //     // console.log('Data appended to file successfully.');
+        //   } else {
+        //     // 檔案不存在，創建新檔案並寫入資料
+        //     const newData = [latestPrice];
+        //     fs.writeFileSync(backUpPath, JSON.stringify(newData, null, 2), 'utf8');
+        //     console.log('File created and data written successfully.');
+        //   }
+        // } catch (err) {
+        //   console.error('Error writing file:', err);
+        // }
         
 
         // 將資料送到kafka
