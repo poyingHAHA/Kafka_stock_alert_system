@@ -67,7 +67,7 @@ const topic = process.env.STOCK_FRONT_TOPIC;
 // db connect success
 db.once('open', () => {
   console.log('MongoDB connected!');
-  
+
   // Restful API
   const app = express();
   app.use(cors());
@@ -89,7 +89,7 @@ db.once('open', () => {
   app.get('/api/stockAlert/:id', async (req, res) => {
     const id = req.params.id;
     try {
-      const data = await stockAlert.find({ stock_id: "2330" });
+      const data = await stockAlert.find({ stock_id: id });
       res.status(200).send({ data });
     } catch (err) {
       console.log(err);
