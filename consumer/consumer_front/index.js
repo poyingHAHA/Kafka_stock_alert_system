@@ -3,7 +3,9 @@ dotenv.config();
 const { kafka } = require('./src/broker/brokerClient');
 const path = require('path');
 const fs = require("fs");
-const { stockAlert, stockBasic } = require('./src/model/index.js');
+const express = require('express');
+const cors = require('cors');
+const { db, stockAlert, stockBasic } = require('./src/model/index.js');
 
 const consumer = kafka.consumer({ groupId: process.env.CONSUMER_GROUP });
 const topic = process.env.STOCK_FRONT_TOPIC;
@@ -60,3 +62,43 @@ const topic = process.env.STOCK_FRONT_TOPIC;
   });
 }
 )();
+
+
+// db connect success
+db.once('open', () => {
+  console.log('MongoDB connected!');
+  
+  // Restful API
+  const app = express();
+  app.use(cors());
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+
+  // get All stocks
+  app.get('/api/stocks', async (req, res) => {
+    try {
+      const stocks = await stockBasic.find();
+      res.status(200).send({ data: stocks });
+    } catch (err) {
+      res.status(500).send({ message: err.message });
+    }
+  });
+
+
+  // get stockAlert by stock
+  app.get('/api/stockAlert/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+      const data = await stockAlert.find({ stock_id: "2330" });
+      res.status(200).send({ data });
+    } catch (err) {
+      console.log(err);
+      res.status(500).send({ message: err.message });
+    }
+  });
+  
+  // listen
+  app.listen(process.env.PORT, () => {
+    console.log(`Server is running on port ${process.env.PORT}`);
+  })
+});

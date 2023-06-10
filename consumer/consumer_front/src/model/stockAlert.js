@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const stockAlertSchema = new mongoose.Schema({
-  id: { type: String, index: true },
+  stock_id: { type: String, index: true },
   stock: { type: String, index: true },
   type: { type: String, index: true },
   timestamp: { type: Date, index: true },
-  init: { type: Boolean, index: true },
+  initial: { type: Boolean, index: true },
   industry: String,
   price: Number,
   msg: String,

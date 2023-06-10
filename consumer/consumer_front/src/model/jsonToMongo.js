@@ -10,7 +10,7 @@ const fs = require("fs");
 //     const jsonData = JSON.parse(data);
 //     for (const history of jsonData) {
 //       // 儲存資料到MongoDB
-//       const newStockAlert = new stockAlert(history);
+//       const newStockAlert = new stockAlert({...history, stock_id: history.id, initial: history.init});
 //       await newStockAlert.save();
 //     }
 //   }
