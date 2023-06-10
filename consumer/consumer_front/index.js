@@ -19,7 +19,7 @@ const topic = process.env.STOCK_FRONT_TOPIC;
       const history = await JSON.parse( message.value.toString() );
       
       // 儲存資料到MongoDB
-      const newStockAlert = new stockAlert(history);
+      const newStockAlert = new stockAlert({...history, stock_id: history.id, initial: history.init});
       await newStockAlert.save();
       const exist = await stockBasic.findOne({id: history.id});
       if (!exist) {
